@@ -5,14 +5,24 @@ import UIKit
 
 struct AppConfigs {
 
-    static let games = [
-        Game(title: "聊天盲盒", description: "经典聚会游戏", cardBackground: "chat", isEnabled: true),
-        Game(title: "整蛊惩罚", description: "考验演技与推理", cardBackground: "trick", isEnabled: false),
-        Game(title: "断句挑战", description: "角色扮演推理游戏", cardBackground: "cut", isEnabled: false),
-        Game(title: "你做我猜", description: "考验想象力和默契", cardBackground: "guess", isEnabled: false),
-        Game(title: "喝酒之弈", description: "刺激有趣的指令游戏", cardBackground: "drink", isEnabled: false),
-        Game(title: "表情猜猜乐", description: "猜谜游戏", cardBackground: "emoji", isEnabled: false)
-    ]
+    static let games: [Game] = {
+        // 创建游戏实例
+        var games = [
+            Game(title: "聊天盲盒", cardBackground: "chat", dataFile: "chat", isEnabled: true),
+            Game(title: "整蛊惩罚", cardBackground: "trick", dataFile: "trick", isEnabled: false),
+            Game(title: "断句挑战", cardBackground: "cut", dataFile: "cut", isEnabled: false),
+            Game(title: "你做我猜", cardBackground: "guess", dataFile: "guess", isEnabled: false),
+            Game(title: "喝酒之弈", cardBackground: "drink", dataFile: "drink", isEnabled: false),
+            Game(title: "表情猜猜乐", cardBackground: "emoji", dataFile: "emoji", isEnabled: false)
+        ]
+        
+        // 立即加载所有启用的游戏的卡片数据
+        for i in 0..<games.count where games[i].isEnabled {
+            games[i].loadCards()
+        }
+        
+        return games
+    }()
 
     static let colorPairs = [
         ("#831c21", "#ffffff"),

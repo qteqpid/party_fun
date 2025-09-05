@@ -42,7 +42,7 @@ struct ContentView: View {
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
                             ForEach(AppConfigs.games) { game in
                                 // 使用GameCoverView组件显示卡片
-                                if game.isEnabled {
+                                if game.isEnabled && game.cards.count > 0 {
                                     // 仅当游戏启用时才允许点击进入
                                     NavigationLink(destination: GameView(game: game)) {
                                         GameCoverView(game: game)

@@ -13,18 +13,9 @@ struct GameView: View {
     let game: Game
     
     @State private var isFlipping = false
-    @State private var currentContent = "点击下方按钮翻转卡片"
+    @State private var card: Card? = nil
     @State private var rotationY = 0.0
     @State private var currentColorPair = (background: Color.white, foreground: Color.black)
-    
-    // 模拟卡片内容
-    let cardContents = [
-        "你最近做过最尴尬的事情是什么？",
-        "你最想和在场的谁交换一天人生？",
-        "如果可以拥有一种超能力，你想要什么？",
-        "你最害怕的事情是什么？",
-        "分享一个你从未告诉过别人的秘密"
-    ]
     
     var body: some View {
         ZStack {
@@ -69,25 +60,12 @@ struct GameView: View {
                             .rotation3DEffect(.degrees(rotationY), axis: (x: 0, y: 1, z: 0))
                     }
                     
-                    // 卡片正面 - 空白白色背景+文字内容
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(currentColorPair.background)
-                        .shadow(radius: 15)
-                        .frame(width: 300, height: 400)
-                        .opacity(rotationY.truncatingRemainder(dividingBy: 360) >= 90 && rotationY.truncatingRemainder(dividingBy: 360) <= 270 ? 1 : 0)
-                        .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
-                    
-                    // 正面文字内容
-                    Text(currentContent)
-                        .font(.title2)
-                        .foregroundColor(currentColorPair.foreground)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .frame(width: 280, height: 380)
-                        .minimumScaleFactor(0.5)
-                        .lineLimit(nil)
-                        .opacity(rotationY.truncatingRemainder(dividingBy: 360) >= 90 && rotationY.truncatingRemainder(dividingBy: 360) <= 270 ? 1 : 0)
-                        .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
+                    // 使用独立的CardChatView组件显示卡片正面
+                    CardChatView(
+                        currentColorPair: currentColorPair,
+                        card: card,
+                        rotationY: rotationY
+                    )
                 }
                 
                 Spacer()
@@ -134,7 +112,7 @@ struct GameView: View {
                 
                 // 延迟更新内容，确保在翻转过程中更新
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                    currentContent = cardContents.randomElement() ?? "点击下方按钮翻转卡片"
+                    card = game.cards.randomElement()
                     
                     // 随机选择一个颜色对
                     if let colorPair = AppConfigs.colorPairs.randomElement() {

@@ -1,0 +1,77 @@
+[
+  {
+    "title": "聊天话题1",
+    "body": "你最近做过最尴尬的事情是什么？",
+    "splitBody": null
+  },
+  {
+    "title": "聊天话题2",
+    "body": "你最想和在场的谁交换一天人生？",
+    "splitBody": null
+  },
+  {
+    "title": "聊天话题3",
+    "body": "如果可以拥有一种超能力，你想要什么？",
+    "splitBody": [
+      {
+        "words": [
+          {
+            "content": "如果可以拥有一种",
+            "fontSize": 18,
+            "hasUnderline": false
+          },
+          {
+            "content": "超能力",
+            "fontSize": 20,
+            "hasUnderline": true
+          },
+          {
+            "content": "，你想要什么？",
+            "fontSize": 18,
+            "hasUnderline": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "聊天话题4",
+    "body": "你最害怕的事情是什么？",
+    "splitBody": null
+  },
+  {
+    "title": "聊天话题5",
+    "body": "分享一个你从未告诉过别人的秘密",
+    "splitBody": [
+      {
+        "words": [
+          {
+            "content": "分享一个你从未告诉过别人的",
+            "fontSize": 18,
+            "hasUnderline": false
+          },
+          {
+            "content": "秘密",
+            "fontSize": 22,
+            "hasUnderline": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "聊天话题6",
+    "body": "你认为自己最大的优点是什么？",
+    "splitBody": null
+  },
+  {
+    "title": "聊天话题7",
+    "body": "如果明天是世界末日，你今天最想做什么？",
+    "splitBody": null
+  },
+  {
+    "title": "聊天话题8",
+    "body": "你最欣赏朋友身上的什么品质？",
+    "splitBody": null
+  }
+]
