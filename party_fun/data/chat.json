@@ -11,7 +11,6 @@
   },
   {
     "title": "聊天话题3",
-    "body": "如果可以拥有一种超能力，你想要什么？",
     "splitBody": [
       {
         "words": [
@@ -19,10 +18,14 @@
             "content": "如果可以拥有一种",
             "fontSize": 18,
             "hasUnderline": false
-          },
+          }
+        ]
+      },
+      {
+        "words": [
           {
             "content": "超能力",
-            "fontSize": 20,
+            "fontSize": 40,
             "hasUnderline": true
           },
           {
@@ -41,7 +44,6 @@
   },
   {
     "title": "聊天话题5",
-    "body": "分享一个你从未告诉过别人的秘密",
     "splitBody": [
       {
         "words": [
@@ -52,7 +54,7 @@
           },
           {
             "content": "秘密",
-            "fontSize": 22,
+            "fontSize": 32,
             "hasUnderline": true
           }
         ]

@@ -36,19 +36,34 @@ struct CardChatView: View {
                     .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
             }
             
-            // 正面文字内容
-            Text(card?.body ?? "暂无内容")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(currentImagePair.foreground)
+            // card.splitBody
+            if let card = card, let _ = card.splitBody {
+                SplitBodyView(
+                    card: card,
+                    foregroundColor: currentImagePair.foreground,
+                    width: AppConfigs.cardWidth - 20,
+                    height: AppConfigs.cardHeight - 20
+                )
                 .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
-                .multilineTextAlignment(.center)
-                .padding()
-                .frame(width: AppConfigs.cardWidth - 20, height: AppConfigs.cardHeight - 20)
-                .minimumScaleFactor(0.5)
-                .lineLimit(nil)
                 .opacity(rotationY.truncatingRemainder(dividingBy: 360) >= 90 && rotationY.truncatingRemainder(dividingBy: 360) <= 270 ? 1 : 0)
                 .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
+            }
+            // card.body
+            if let card = card, let _ = card.body {
+                Text(card.body ?? "")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(currentImagePair.foreground)
+                    .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .frame(width: AppConfigs.cardWidth - 20, height: AppConfigs.cardHeight - 20)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(nil)
+                    .opacity(rotationY.truncatingRemainder(dividingBy: 360) >= 90 && rotationY.truncatingRemainder(dividingBy: 360) <= 270 ? 1 : 0)
+                    .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
+            }
+            
         }
     }
 }

@@ -56,17 +56,18 @@ struct AppConfigs {
     static let games: [Game] = {
         // 创建游戏实例 - 为所有游戏添加cardForeground参数
         var games = [
-            Game(title: "聊天盲盒", cardBackground: "chat.png", cardForeground: "card_front.jpg", dataFile: "chat", isEnabled: true),
+            Game(title: "聊天盲盒", cardBackground: "chat.png", cardForeground: nil, dataFile: "chat", isEnabled: true),
             Game(title: "整蛊惩罚", cardBackground: "trick.png", cardForeground: nil, dataFile: "trick", isEnabled: false),
             Game(title: "断句挑战", cardBackground: "cut.png", cardForeground: nil, dataFile: "cut", isEnabled: false),
-            Game(title: "你做我猜", cardBackground: "guess.png", cardForeground: nil, dataFile: "guess", isEnabled: false),
-            Game(title: "喝酒之弈", cardBackground: "drink.png", cardForeground: nil, dataFile: "drink", isEnabled: false),
+            Game(title: "你做我猜", cardBackground: "guess.png", cardForeground: (nil, "#ffffff"), dataFile: "guess", isEnabled: false),
+            Game(title: "喝酒之弈", cardBackground: "drink.png", cardForeground: ("drink_card.jpg", "#ffffff"), dataFile: "drink", isEnabled: false),
             Game(title: "表情猜猜乐", cardBackground: "emoji.png", cardForeground: nil, dataFile: "emoji", isEnabled: false)
         ]
         
         // 立即加载所有启用的游戏的卡片数据
         for i in 0..<games.count where games[i].isEnabled {
             games[i].loadCards()
+            games[i].loadCardForeground()
         }
         
         return games

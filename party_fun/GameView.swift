@@ -29,7 +29,7 @@ struct GameView: View {
     @State private var isFlipping = false
     @State private var card: Card? = nil
     @State private var rotationY = 0.0
-    @State private var currentImagePair = (background: Game.imagePairs.first?.0, foreground: Color.white)
+    @State private var currentImagePair = (background: Game.defaultImagePairs.first?.0, foreground: Color.white)
     @State private var currentImageIndex = 0 // 添加索引变量用于循环选择图片
     
     // 预加载背景图片以提高性能
@@ -157,14 +157,10 @@ struct GameView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                     card = game.cards.randomElement()
                     // 循环选择下一个图片对
-                    if !Game.imagePairs.isEmpty {
-                        let imagePair = Game.imagePairs[currentImageIndex]
-                        currentImagePair = (
-                            background: imagePair.0,
-                            foreground: Color(hex: imagePair.1) ?? Color.white
-                        )
+                    if !game.imagePairs().isEmpty {
+                        currentImagePair = game.imagePairs()[currentImageIndex]
                         // 递增索引并循环回绕
-                        currentImageIndex = (currentImageIndex + 1) % Game.imagePairs.count
+                        currentImageIndex = (currentImageIndex + 1) % game.imagePairs().count
                     }
                 }
             } else {

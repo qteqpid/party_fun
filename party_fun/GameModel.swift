@@ -5,11 +5,22 @@ struct Game: Identifiable {
     let id = UUID()
     let title: String
     let cardBackground: String
-    let cardForeground: String? // 可选参数，用于卡片正面背景图片
+    let cardForeground: (String?, String)? // 可选参数，用于卡片正面背景图片
     let dataFile: String
     let isEnabled: Bool
     var cards: [Card] = []
+    var cardForegroundImagePair: [(UIImage?, Color)] = []
 
+
+    func imagePairs() -> [(UIImage?, Color)] {
+        if !cardForegroundImagePair.isEmpty {
+            return cardForegroundImagePair
+        } else {
+            return Game.defaultImagePairs
+        }
+    }
+
+    // unused
     static let colorPairs = [
         ("#831c21", "#ffffff"),
         ("#ffffff", "#831c21"),
@@ -21,7 +32,9 @@ struct Game: Identifiable {
         ("#a3b09b", "#ffffff")
     ]
 
-    static let imagePairs: [(UIImage?, String)] = {
+    static let defaultImagePairs: [(UIImage?, Color)] = {
+        var imagePairs: [(UIImage?, Color)] = []
+        // 默认卡纸图片和颜色
         var pairs = [
             ("fg1.jpg", "#FBB917"),
             ("fg2.jpg", "#ffffff"),
@@ -35,17 +48,24 @@ struct Game: Identifiable {
             ("fg10.jpg", "#ffffff"),
             ("fg11.jpg", "#ffffff")
         ]
-        var imagePairs: [(UIImage?, String)] = []
+        
         
         for i in 0..<pairs.count {
             let image = AppConfigs.loadImage(name: pairs[i].0)
-            imagePairs.append((image, pairs[i].1))
+            imagePairs.append((image, Color(hex: pairs[i].1) ?? Color.white))
         }
         
         return imagePairs
     }()
 
     var fgImage: UIImage?
+
+    mutating func loadCardForeground() {
+        if let cardForeground = self.cardForeground {
+            fgImage = AppConfigs.loadImage(name: cardForeground.0)
+            cardForegroundImagePair.append((fgImage, Color(hex: cardForeground.1) ?? Color.white))
+        }
+    }
 
     mutating func loadCards() {
         guard let url = Bundle.main.url(forResource: self.dataFile, withExtension: "json") else {
@@ -65,17 +85,6 @@ struct Game: Identifiable {
             cards = []
         }
     }
-
-    mutating func loadForegroundImage() -> UIImage? {
-        if let fgImage = fgImage {
-            return fgImage
-        } else {
-            if let cardForeground = cardForeground {
-                fgImage = AppConfigs.loadImage(name: cardForeground)
-            }
-            return fgImage
-        }
-    }
 }
 
 
@@ -89,7 +98,7 @@ struct Line: Decodable {
     let words: [Word]
 }
 struct Card: Decodable {
-    let title: String
-    let body: String
+    let title: String?
+    let body: String?
     let splitBody: [Line]?
 }
