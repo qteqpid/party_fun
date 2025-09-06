@@ -1,7 +1,10 @@
 import SwiftUI
 
+// 游戏封面视图
 struct GameCoverView: View {
     let game: Game
+    // 控制游戏规则弹窗的显示状态
+    @State private var isShowingRules = false
     
     var body: some View {
         ZStack {
@@ -41,11 +44,35 @@ struct GameCoverView: View {
                 }
                 
             } else {
-                // 半透明覆盖层，确保文字清晰可见
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.black.opacity(0.1))
-                    .frame(width: AppConfigs.gameCoverWidth, height: AppConfigs.gameCoverHeight)
+                // 下半部分半透明蒙层和游戏规则文字
+                VStack {
+                    Spacer()
+                    // 半透明蒙层
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.black.opacity(0.5))
+                        .frame(width: AppConfigs.gameCoverWidth, height: AppConfigs.gameCoverHeight * 0.2)
+                        // 添加点击手势
+                        .onTapGesture {
+                            isShowingRules.toggle()
+                        }
+                        .overlay(alignment: .center) {
+                            // 游戏规则文字
+                            Text("游戏规则")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.white)
+                                .shadow(radius: 2)
+                        }
+                }
             }
+        }
+        // 游戏规则弹窗 - 设置为半屏sheet
+        .sheet(isPresented: $isShowingRules) {
+            GameRulePopupView(isShowing: $isShowingRules, gameName: game.gameName)
+                // 设置为半屏显示
+                .presentationDetents([.medium])
+                // 显示拖动指示器
+                .presentationDragIndicator(.visible)
         }
     }
 }

@@ -1,5 +1,15 @@
 import SwiftUI
 
+// 游戏名称枚举
+enum GameName: String, CaseIterable {
+    case chat = "chat"
+    case drink = "drink"
+    case trick = "trick"
+    case guess = "guess"
+    case emoji = "emoji"
+    case cut = "cut"
+}
+
 // 定义卡片数据模型
 struct Game: Identifiable {
     let id = UUID()
@@ -8,6 +18,7 @@ struct Game: Identifiable {
     let cardForeground: (String?, String)? // 可选参数，用于卡片正面背景图片
     let dataFile: String
     let isEnabled: Bool
+    let gameName: GameName // 新增字段，存储游戏名称枚举
     var cards: [Card] = []
     var cardForegroundImagePair: [(UIImage?, Color)] = []
 
