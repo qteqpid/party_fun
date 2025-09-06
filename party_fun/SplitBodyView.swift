@@ -18,6 +18,8 @@ struct SplitBodyView: View {
                             .fontWeight(.bold)
                             .foregroundColor(foregroundColor)
                             .underline(word.hasUnderline, color: foregroundColor)
+                            .minimumScaleFactor(0.5) // 允许字体缩小到原大小的50%
+                            .lineLimit(1) // 限制为单行，强制字体缩放而不是换行
                     }
                     Spacer() // 确保每行内容左对齐
                 }.border(.red)

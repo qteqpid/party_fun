@@ -35,6 +35,7 @@ struct ContentView: View {
                     
                     // 可无限下拉的ScrollView
                     ScrollView {
+                        Spacer().frame(height: 20)
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
                             ForEach(AppConfigs.games) { game in
                                 // 使用GameCoverView组件显示卡片

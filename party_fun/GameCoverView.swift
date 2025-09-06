@@ -40,6 +40,7 @@ struct GameCoverView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 100, height: 100)
+                            .shadow(color: .yellow, radius: 5, x: 0, y: 0)
                     }
                 }
                 

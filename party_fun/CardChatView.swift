@@ -5,6 +5,12 @@ struct CardChatView: View {
     var card: Card?
     var rotationY: Double
 
+    // 计算卡片是否应该显示（根据旋转角度）
+    private var isVisible: Bool {
+        let angle = rotationY.truncatingRemainder(dividingBy: 360)
+        return angle >= 90 && angle <= 270
+    }
+
     var body: some View {
         ZStack {
             // 卡片正面背景 - 支持图片或颜色
@@ -23,8 +29,6 @@ struct CardChatView: View {
                                 .stroke(Color.yellow, lineWidth: 0.5)
                         }
                     )
-                    .opacity(rotationY.truncatingRemainder(dividingBy: 360) >= 90 && rotationY.truncatingRemainder(dividingBy: 360) <= 270 ? 1 : 0)
-                    .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
 
             } else {
                 // 使用颜色背景（保持原有逻辑）
@@ -32,8 +36,6 @@ struct CardChatView: View {
                     .fill(Color.white)
                     .shadow(radius: 15)
                     .frame(width: AppConfigs.cardWidth, height: AppConfigs.cardHeight)
-                    .opacity(rotationY.truncatingRemainder(dividingBy: 360) >= 90 && rotationY.truncatingRemainder(dividingBy: 360) <= 270 ? 1 : 0)
-                    .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
             }
             
             // card.splitBody
@@ -45,8 +47,6 @@ struct CardChatView: View {
                     height: AppConfigs.cardHeight - 20
                 )
                 .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
-                .opacity(rotationY.truncatingRemainder(dividingBy: 360) >= 90 && rotationY.truncatingRemainder(dividingBy: 360) <= 270 ? 1 : 0)
-                .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
             }
             // card.body
             if let card = card, let _ = card.body {
@@ -60,10 +60,10 @@ struct CardChatView: View {
                     .frame(width: AppConfigs.cardWidth - 20, height: AppConfigs.cardHeight - 20)
                     .minimumScaleFactor(0.5)
                     .lineLimit(nil)
-                    .opacity(rotationY.truncatingRemainder(dividingBy: 360) >= 90 && rotationY.truncatingRemainder(dividingBy: 360) <= 270 ? 1 : 0)
-                    .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
             }
             
         }
+        .opacity(isVisible ? 1 : 0)
+        .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
     }
 }

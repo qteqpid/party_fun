@@ -36,8 +36,57 @@ struct GameView: View {
     private let bgImage: UIImage? = AppConfigs.loadImage(name: AppConfigs.bgImage)
     
     var body: some View {
-        ZStack {
-            // 优化背景图片渲染 - 使用单独的图层并设置为固定背景
+        VStack {
+            // 标题栏
+            HStack {
+                Spacer()
+                Text(game.title)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .padding(.vertical, 10)
+                Spacer()
+            }
+            .padding()
+            
+            Spacer()
+            
+            // 大卡片 - 正反面设计
+            ZStack {
+                // 卡片背面 - 显示游戏图片
+                // 使用独立的CardBackView组件
+                CardBackView(
+                    game: game,
+                    rotationY: rotationY
+                )
+                
+                // 使用独立的CardChatView组件显示卡片正面
+                CardChatView(
+                    currentImagePair: currentImagePair,
+                    card: card,
+                    rotationY: rotationY
+                )
+            }
+            
+            Spacer().frame(height: 40)
+            
+            // 圆形大按钮 - 点击开始翻牌，再次点击停止翻牌
+            // 使用独立的ButtonView组件
+            ButtonView(
+                isActive: isFlipping,
+                onButtonTap: {
+                    // 切换翻牌状态
+                    if isFlipping {
+                        stopFlipping()
+                    } else {
+                        startFlipping()
+                    }
+                }
+            )
+            
+            Spacer()
+        }.background {
+   // 优化背景图片渲染 - 使用单独的图层并设置为固定背景
             if let bgImage = bgImage {
                 // 使用单独的视图作为背景，避免与前景动画交互
                 BackgroundImageView(image: bgImage)
@@ -46,97 +95,6 @@ struct GameView: View {
                 // 回退渐变色背景
                 LinearGradient(gradient: Gradient(colors: [Color.purple.opacity(0.1), Color.blue.opacity(0.1)]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
-            }
-            
-            VStack {
-                // 标题栏
-                HStack {
-                    Spacer()
-                    Text(game.title)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)
-                        .padding(.vertical, 40)
-                    Spacer()
-                }
-                .padding()
-                
-                Spacer()
-                
-                // 大卡片 - 正反面设计
-                ZStack {
-                    // 卡片背面 - 显示游戏图片
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.white)
-                        .shadow(radius: 15)
-                        .frame(width: AppConfigs.cardWidth, height: AppConfigs.cardHeight)
-                        .opacity(rotationY.truncatingRemainder(dividingBy: 360) < 90 || rotationY.truncatingRemainder(dividingBy: 360) > 270 ? 1 : 0)
-                        .rotation3DEffect(.degrees(rotationY), axis: (x: 0, y: 1, z: 0))
-                    
-                    // 背面图片
-                    if let image = AppConfigs.loadImage(name: game.cardBackground) {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: AppConfigs.cardWidth - 20, height: AppConfigs.cardHeight - 20)
-                            .clipped()
-                            .cornerRadius(15)
-                            .opacity(rotationY.truncatingRemainder(dividingBy: 360) < 90 || rotationY.truncatingRemainder(dividingBy: 360) > 270 ? 1 : 0)
-                            .rotation3DEffect(.degrees(rotationY), axis: (x: 0, y: 1, z: 0))
-                    }
-                    
-                    // 使用独立的CardChatView组件显示卡片正面
-                    CardChatView(
-                        currentImagePair: currentImagePair,
-                        card: card,
-                        rotationY: rotationY
-                    )
-                }
-                
-                Spacer().frame(height: 40)
-                
-                // 圆形大按钮 - 点击开始翻牌，再次点击停止翻牌
-                Button {
-                    // 切换翻牌状态
-                    if isFlipping {
-                        stopFlipping()
-                    } else {
-                        startFlipping()
-                    }
-                } label: {
-                    if let buttonImg = AppConfigs.loadImage(name: "button.png") {
-                        Image(uiImage: buttonImg)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 150, height: 150)
-                            .overlay(
-                                Text(isFlipping ? "STOP" : "START")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(isFlipping ? Color(hex: "#831c21") : Color.white)
-                                    .shadow(radius: 2)
-                                )
-                            .scaleEffect(isFlipping ? 0.9 : 1.0)
-                            .opacity(isFlipping ? 0.9 : 1.0)
-                            .shadow(radius: isFlipping ? 8 : 5)
-                            .animation(.easeInOut(duration: 0.3), value: isFlipping)
-                    } else {
-                        Circle()
-                        .fill(isFlipping ? Color.red : Color.blue)
-                        .scaleEffect(isFlipping ? 0.9 : 1.0)
-                        .frame(width: 150, height: 150)
-                        .shadow(radius: isFlipping ? 15 : 10)
-                        .overlay(
-                            Text(isFlipping ? "停止翻牌" : "开始翻牌")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.white)
-                        )
-                        .animation(.easeInOut, value: isFlipping)
-                    } 
-                }
-                
-                Spacer()
             }
         }
     }

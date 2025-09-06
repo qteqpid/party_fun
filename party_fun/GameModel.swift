@@ -63,7 +63,7 @@ struct Game: Identifiable {
         
         for i in 0..<pairs.count {
             let image = AppConfigs.loadImage(name: pairs[i].0)
-            imagePairs.append((image, Color(hex: pairs[i].1) ?? Color.white))
+            imagePairs.append((image, Color(hex: pairs[i].1)))
         }
         
         return imagePairs
@@ -74,7 +74,7 @@ struct Game: Identifiable {
     mutating func loadCardForeground() {
         if let cardForeground = self.cardForeground {
             fgImage = AppConfigs.loadImage(name: cardForeground.0)
-            cardForegroundImagePair.append((fgImage, Color(hex: cardForeground.1) ?? Color.white))
+            cardForegroundImagePair.append((fgImage, Color(hex: cardForeground.1)))
         }
     }
 

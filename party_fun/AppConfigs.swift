@@ -105,25 +105,49 @@ struct AppConfigs {
 
 // 为Color添加从十六进制字符串创建的扩展
 extension Color {
-    init?(hex: String) {
-        // 移除可能的#前缀
-        let hexString = hex.trimmingCharacters(in: CharacterSet(charactersIn: "#"))
+    // 修复版本 - 使用非可失败初始化器，并增加对各种十六进制格式的支持
+    init(hex: String) {
+        var hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         
-        // 确保字符串长度正确
-        guard hexString.count == 6 else {
-            return nil
+        // 处理#前缀
+        if hex.hasPrefix("#") {
+            hex = String(hex.dropFirst())
         }
         
-        // 尝试解析十六进制值
-        guard let rgbValue = UInt32(hexString, radix: 16) else {
-            return nil
+        // 支持3位、6位和8位十六进制格式
+        var hexValue: UInt64 = 0
+        
+        if Scanner(string: hex).scanHexInt64(&hexValue) {
+            var r, g, b, a: Double
+            
+            switch hex.count {
+            case 3: // RGB (12-bit)
+                r = Double((hexValue & 0xF00) >> 8) / 15.0
+                g = Double((hexValue & 0x0F0) >> 4) / 15.0
+                b = Double(hexValue & 0x00F) / 15.0
+                a = 1.0
+            case 6: // RGB (24-bit)
+                r = Double((hexValue & 0xFF0000) >> 16) / 255.0
+                g = Double((hexValue & 0x00FF00) >> 8) / 255.0
+                b = Double(hexValue & 0x0000FF) / 255.0
+                a = 1.0
+            case 8: // RGBA (32-bit)
+                r = Double((hexValue & 0xFF000000) >> 24) / 255.0
+                g = Double((hexValue & 0x00FF0000) >> 16) / 255.0
+                b = Double((hexValue & 0x0000FF00) >> 8) / 255.0
+                a = Double(hexValue & 0x000000FF) / 255.0
+            default:
+                // 默认值 - 黑色
+                r = 0.0
+                g = 0.0
+                b = 0.0
+                a = 1.0
+            }
+            
+            self.init(.sRGB, red: r, green: g, blue: b, opacity: a)
+        } else {
+            // 如果解析失败，返回黑色
+            self.init(red: 0.0, green: 0.0, blue: 0.0)
         }
-        
-        // 计算RGB值
-        let red = Double((rgbValue & 0xFF0000) >> 16) / 255.0
-        let green = Double((rgbValue & 0x00FF00) >> 8) / 255.0
-        let blue = Double(rgbValue & 0x0000FF) / 255.0
-        
-        self.init(red: red, green: green, blue: blue)
     }
 }

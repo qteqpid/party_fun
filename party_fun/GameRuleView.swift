@@ -25,7 +25,7 @@ struct GameRulePopupView: View {
     @Binding var isShowing: Bool
     let gameName: GameName
     
-    private let buttonColor = Color(red:239/255.0, green: 79/255.0, blue: 79/255.0)
+    private let buttonColor = Color(hex: "#EF504F")
     private let bgColor = Color(red:45/255.0, green: 45/255.0, blue: 45/255.0)
     var body: some View {
         VStack {
