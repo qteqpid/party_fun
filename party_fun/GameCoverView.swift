@@ -6,12 +6,20 @@ struct GameCoverView: View {
     var body: some View {
         ZStack {
             // 卡片背景图
-            if let image = AppConfigs.loadImage(imageName: game.cardBackground, imageType: "png") {
+            if let image = AppConfigs.loadImage(name: game.cardBackground) {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 150, height: 200)
+                    .frame(width: AppConfigs.gameCoverWidth, height: AppConfigs.gameCoverHeight)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
+                    // 添加立体感的金色描边效果
+                    .overlay(
+                        ZStack {
+                            // 内层金色描边（主色）
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.yellow, lineWidth: 0.3)
+                        }
+                    )
                     .shadow(radius: 10)
             }
                 
@@ -22,9 +30,9 @@ struct GameCoverView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(Color.black.opacity(0.5))
-                        .frame(width: 150, height: 200)
+                        .frame(width: AppConfigs.gameCoverWidth, height: AppConfigs.gameCoverHeight)
 
-                    if let lockImage = AppConfigs.loadImage(imageName: "lock", imageType: "png") {
+                    if let lockImage = AppConfigs.loadImage(name: "lock.png") {
                         Image(uiImage: lockImage)
                             .resizable()
                             .scaledToFit()
@@ -36,7 +44,7 @@ struct GameCoverView: View {
                 // 半透明覆盖层，确保文字清晰可见
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.black.opacity(0.1))
-                    .frame(width: 150, height: 200)
+                    .frame(width: AppConfigs.gameCoverWidth, height: AppConfigs.gameCoverHeight)
             }
         }
     }

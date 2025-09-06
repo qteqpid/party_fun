@@ -5,10 +5,47 @@ struct Game: Identifiable {
     let id = UUID()
     let title: String
     let cardBackground: String
+    let cardForeground: String? // 可选参数，用于卡片正面背景图片
     let dataFile: String
     let isEnabled: Bool
     var cards: [Card] = []
 
+    static let colorPairs = [
+        ("#831c21", "#ffffff"),
+        ("#ffffff", "#831c21"),
+        ("#745e90", "#ffffff"),
+        ("#f0894c", "#ffffff"),
+        ("#458ea3", "#ffffff"),
+        ("#9b5180", "#ffffff"),
+        ("#93ab7d", "#ffffff"),
+        ("#a3b09b", "#ffffff")
+    ]
+
+    static let imagePairs: [(UIImage?, String)] = {
+        var pairs = [
+            ("fg1.jpg", "#FBB917"),
+            ("fg2.jpg", "#ffffff"),
+            ("fg3.jpg", "#ffffff"),
+            ("fg4.jpg", "#ffffff"),
+            ("fg5.jpg", "#ffffff"),
+            ("fg6.jpg", "#ffffff"),
+            ("fg7.jpg", "#FBB917"),
+            ("fg8.jpg", "#ffffff"),
+            ("fg9.jpg", "#ffffff"),
+            ("fg10.jpg", "#ffffff"),
+            ("fg11.jpg", "#ffffff")
+        ]
+        var imagePairs: [(UIImage?, String)] = []
+        
+        for i in 0..<pairs.count {
+            let image = AppConfigs.loadImage(name: pairs[i].0)
+            imagePairs.append((image, pairs[i].1))
+        }
+        
+        return imagePairs
+    }()
+
+    var fgImage: UIImage?
 
     mutating func loadCards() {
         guard let url = Bundle.main.url(forResource: self.dataFile, withExtension: "json") else {
@@ -26,6 +63,17 @@ struct Game: Identifiable {
             // 加载失败时使用模拟数据
             print("加载卡片数据失败: \(error.localizedDescription)")
             cards = []
+        }
+    }
+
+    mutating func loadForegroundImage() -> UIImage? {
+        if let fgImage = fgImage {
+            return fgImage
+        } else {
+            if let cardForeground = cardForeground {
+                fgImage = AppConfigs.loadImage(name: cardForeground)
+            }
+            return fgImage
         }
     }
 }

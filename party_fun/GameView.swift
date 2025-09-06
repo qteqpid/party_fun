@@ -8,6 +8,20 @@
 import SwiftUI
 
 
+// 优化的背景图片视图，独立于前景动画
+struct BackgroundImageView: View {
+    let image: UIImage
+    
+    var body: some View {
+        Image(uiImage: image)
+            .resizable()
+            .scaledToFill()
+            .overlay(Color.black.opacity(0.2)) // 添加半透明遮罩增强可读性
+            .accessibility(hidden: true) // 对辅助功能隐藏
+            .drawingGroup() // 优化渲染性能
+    }
+}
+
 // 游戏视图
 struct GameView: View {
     let game: Game
@@ -15,13 +29,24 @@ struct GameView: View {
     @State private var isFlipping = false
     @State private var card: Card? = nil
     @State private var rotationY = 0.0
-    @State private var currentColorPair = (background: Color.white, foreground: Color.black)
+    @State private var currentImagePair = (background: Game.imagePairs.first?.0, foreground: Color.white)
+    @State private var currentImageIndex = 0 // 添加索引变量用于循环选择图片
+    
+    // 预加载背景图片以提高性能
+    private let bgImage: UIImage? = AppConfigs.loadImage(name: AppConfigs.bgImage)
     
     var body: some View {
         ZStack {
-            // 背景色
-            LinearGradient(gradient: Gradient(colors: [Color.purple.opacity(0.1), Color.blue.opacity(0.1)]), startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
+            // 优化背景图片渲染 - 使用单独的图层并设置为固定背景
+            if let bgImage = bgImage {
+                // 使用单独的视图作为背景，避免与前景动画交互
+                BackgroundImageView(image: bgImage)
+                    .ignoresSafeArea()
+            } else {
+                // 回退渐变色背景
+                LinearGradient(gradient: Gradient(colors: [Color.purple.opacity(0.1), Color.blue.opacity(0.1)]), startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+            }
             
             VStack {
                 // 标题栏
@@ -30,8 +55,8 @@ struct GameView: View {
                     Text(game.title)
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.black)
-                        .padding()
+                        .foregroundColor(Color.white)
+                        .padding(.vertical, 40)
                     Spacer()
                 }
                 .padding()
@@ -44,16 +69,16 @@ struct GameView: View {
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color.white)
                         .shadow(radius: 15)
-                        .frame(width: 300, height: 400)
+                        .frame(width: AppConfigs.cardWidth, height: AppConfigs.cardHeight)
                         .opacity(rotationY.truncatingRemainder(dividingBy: 360) < 90 || rotationY.truncatingRemainder(dividingBy: 360) > 270 ? 1 : 0)
                         .rotation3DEffect(.degrees(rotationY), axis: (x: 0, y: 1, z: 0))
                     
                     // 背面图片
-                    if let image = AppConfigs.loadImage(imageName: game.cardBackground, imageType: "png") {
+                    if let image = AppConfigs.loadImage(name: game.cardBackground) {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 280, height: 380)
+                            .frame(width: AppConfigs.cardWidth - 20, height: AppConfigs.cardHeight - 20)
                             .clipped()
                             .cornerRadius(15)
                             .opacity(rotationY.truncatingRemainder(dividingBy: 360) < 90 || rotationY.truncatingRemainder(dividingBy: 360) > 270 ? 1 : 0)
@@ -62,24 +87,41 @@ struct GameView: View {
                     
                     // 使用独立的CardChatView组件显示卡片正面
                     CardChatView(
-                        currentColorPair: currentColorPair,
+                        currentImagePair: currentImagePair,
                         card: card,
                         rotationY: rotationY
                     )
                 }
                 
-                Spacer()
+                Spacer().frame(height: 40)
                 
                 // 圆形大按钮 - 点击开始翻牌，再次点击停止翻牌
-                Button(action: {
+                Button {
                     // 切换翻牌状态
                     if isFlipping {
                         stopFlipping()
                     } else {
                         startFlipping()
                     }
-                }) {
-                    Circle()
+                } label: {
+                    if let buttonImg = AppConfigs.loadImage(name: "button.png") {
+                        Image(uiImage: buttonImg)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .overlay(
+                                Text(isFlipping ? "STOP" : "START")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(isFlipping ? Color(hex: "#831c21") : Color.white)
+                                    .shadow(radius: 2)
+                                )
+                            .scaleEffect(isFlipping ? 0.9 : 1.0)
+                            .opacity(isFlipping ? 0.9 : 1.0)
+                            .shadow(radius: isFlipping ? 8 : 5)
+                            .animation(.easeInOut(duration: 0.3), value: isFlipping)
+                    } else {
+                        Circle()
                         .fill(isFlipping ? Color.red : Color.blue)
                         .scaleEffect(isFlipping ? 0.9 : 1.0)
                         .frame(width: 150, height: 150)
@@ -91,6 +133,7 @@ struct GameView: View {
                                 .foregroundColor(Color.white)
                         )
                         .animation(.easeInOut, value: isFlipping)
+                    } 
                 }
                 
                 Spacer()
@@ -113,13 +156,15 @@ struct GameView: View {
                 // 延迟更新内容，确保在翻转过程中更新
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                     card = game.cards.randomElement()
-                    
-                    // 随机选择一个颜色对
-                    if let colorPair = AppConfigs.colorPairs.randomElement() {
-                        currentColorPair = (
-                            background: Color(hex: colorPair.0) ?? Color.white,
-                            foreground: Color(hex: colorPair.1) ?? Color.black
+                    // 循环选择下一个图片对
+                    if !Game.imagePairs.isEmpty {
+                        let imagePair = Game.imagePairs[currentImageIndex]
+                        currentImagePair = (
+                            background: imagePair.0,
+                            foreground: Color(hex: imagePair.1) ?? Color.white
                         )
+                        // 递增索引并循环回绕
+                        currentImageIndex = (currentImageIndex + 1) % Game.imagePairs.count
                     }
                 }
             } else {
