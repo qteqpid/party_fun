@@ -31,7 +31,7 @@ struct CardFrontView: View {
                         lines: card.body!,
                         foregroundColor: currentImagePair.foreground,
                         width: AppConfigs.cardWidth - 40,
-                    ).border(Color.red)
+                    )
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
                 Spacer()
@@ -41,7 +41,7 @@ struct CardFrontView: View {
                         lines: card.body2!,
                         foregroundColor: currentImagePair.foreground,
                         width: AppConfigs.cardWidth - 40,
-                    ).border(Color.red)
+                    )
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
             }
