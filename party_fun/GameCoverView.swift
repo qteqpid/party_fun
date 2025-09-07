@@ -5,6 +5,8 @@ struct GameCoverView: View {
     let game: Game
     // 控制游戏规则弹窗的显示状态
     @State private var isShowingRules = false
+    // 控制锁定提示弹窗的显示状态
+    @State private var isShowingLockAlert = false
     
     var body: some View {
         ZStack {
@@ -41,6 +43,10 @@ struct GameCoverView: View {
                             .scaledToFit()
                             .frame(width: 100, height: 100)
                             .shadow(color: .yellow, radius: 5, x: 0, y: 0)
+                            // 添加点击手势显示锁定提示
+                            .onTapGesture {
+                                isShowingLockAlert.toggle()
+                            }
                     }
                 }
                 
@@ -74,6 +80,15 @@ struct GameCoverView: View {
                 .presentationDetents([.medium])
                 // 显示拖动指示器
                 .presentationDragIndicator(.visible)
+        }
+        // 锁定提示弹窗 - 美化的alert
+        .alert("啥时候能玩？", isPresented: $isShowingLockAlert) {
+            Button("行，再给你几天时间") {}
+                .foregroundColor(Color.white)
+        } message: {
+            Text("别问，问就是马上就弄好了")
+                .font(.body)
+                .foregroundColor(Color.primary)
         }
     }
 }
