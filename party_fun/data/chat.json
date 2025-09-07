@@ -1,17 +1,15 @@
 [
   {
-    "title": "聊天话题1",
-    "body": "你最近做过最尴尬的事情是什么？",
-    "splitBody": null
-  },
-  {
-    "title": "聊天话题2",
-    "body": "你最想和在场的谁交换一天人生？",
-    "splitBody": null
-  },
-  {
-    "title": "聊天话题3",
-    "splitBody": [
+    "title": {
+        "words": [
+          {
+            "content": "聊天话题1",
+            "fontSize": 12,
+            "hasUnderline": false
+          }
+        ]
+    },
+    "body": [
       {
         "words": [
           {
@@ -38,13 +36,32 @@
     ]
   },
   {
-    "title": "聊天话题4",
-    "body": "你最害怕的事情是什么？",
-    "splitBody": null
-  },
-  {
-    "title": "聊天话题5",
-    "splitBody": [
+    "title": {
+        "words": [
+          {
+            "content": "聊天话题2",
+            "fontSize": 12,
+            "hasUnderline": false
+          }
+        ]
+    },
+    "body": [
+      {
+        "words": [
+          {
+            "content": "分享一个你从未告诉过别人的",
+            "fontSize": 18,
+            "hasUnderline": false
+          },
+          {
+            "content": "秘密",
+            "fontSize": 32,
+            "hasUnderline": true
+          }
+        ]
+      }
+    ],
+    "body2": [
       {
         "words": [
           {
@@ -62,18 +79,14 @@
     ]
   },
   {
-    "title": "聊天话题6",
-    "body": "你认为自己最大的优点是什么？",
-    "splitBody": null
-  },
-  {
-    "title": "聊天话题7",
-    "body": "如果明天是世界末日，你今天最想做什么？",
-    "splitBody": null
-  },
-  {
-    "title": "聊天话题8",
-    "body": "你最欣赏朋友身上的什么品质？",
-    "splitBody": null
+    "title": {
+        "words": [
+          {
+            "content": "聊天话题3",
+            "fontSize": 12,
+            "hasUnderline": false
+          }
+        ]
+    }
   }
 ]

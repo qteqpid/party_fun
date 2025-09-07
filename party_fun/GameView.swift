@@ -60,8 +60,8 @@ struct GameView: View {
                     rotationY: rotationY
                 )
                 
-                // 使用独立的CardChatView组件显示卡片正面
-                CardChatView(
+                // 使用独立的CardFrontView组件显示卡片正面
+                CardFrontView(
                     currentImagePair: currentImagePair,
                     card: card,
                     rotationY: rotationY

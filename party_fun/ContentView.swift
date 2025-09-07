@@ -9,8 +9,20 @@ import SwiftUI
 import UIKit
 
 
-
+extension UINavigationController {
+    open override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        navigationBar.topItem?.backBarButtonItem = 
+        UIBarButtonItem(title: "返回", style: .plain, target: nil, action: nil)
+    }
+}
 struct ContentView: View {
+    // init() {
+    //     let appearance = UINavigationBarAppearance()
+    //     appearance.backgroundColor = .clear
+    //     appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+    //     UINavigationBar.appearance().standardAppearance = appearance
+    // }
     
     var body: some View {
         NavigationStack {

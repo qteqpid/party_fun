@@ -92,7 +92,7 @@ struct Game: Identifiable {
             cards = decodedCards.shuffled()
         } catch {
             // 加载失败时使用模拟数据
-            print("加载卡片数据失败: \(error.localizedDescription)")
+            print("[\(self.dataFile).json文件]加载卡片数据失败: \(error.localizedDescription)")
             cards = []
         }
     }
@@ -109,7 +109,7 @@ struct Line: Decodable {
     let words: [Word]
 }
 struct Card: Decodable {
-    let title: String?
-    let body: String?
-    let splitBody: [Line]?
+    let title: Line?
+    let body: [Line]?
+    let body2: [Line]?
 }
