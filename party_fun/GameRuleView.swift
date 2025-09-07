@@ -47,10 +47,11 @@ struct GameRulePopupView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     // 游戏简介
                     Text("游戏规则说明：")
-                        .font(.headline)
+                        .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(buttonColor)
+                        .foregroundColor(Color.white)
                         .padding(.horizontal, 20)
+                        .padding(.bottom, 10)
                     
                     // 规则列表 - 美化版本
                     ForEach(Array(ruleDescription.rules.enumerated()), id: \.element) {
