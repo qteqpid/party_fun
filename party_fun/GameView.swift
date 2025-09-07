@@ -113,7 +113,12 @@ struct GameView: View {
                 
                 // 延迟更新内容，确保在翻转过程中更新
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                    card = game.cards.randomElement()
+                    if (AppConfigs.isDebug) {
+                        card = game.cards.first
+                    } else {
+                        card = game.cards.randomElement()
+                    }
+                    
                     // 循环选择下一个图片对
                     if !game.imagePairs().isEmpty {
                         currentImagePair = game.imagePairs()[currentImageIndex]

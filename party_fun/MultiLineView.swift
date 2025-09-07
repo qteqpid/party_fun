@@ -13,7 +13,7 @@ struct MultiLineView: View {
             }
         }
         .multilineTextAlignment(.center)
-        .padding()
+        .padding(.vertical, 10)
         .frame(width: width) // 自动处理nil值
         .minimumScaleFactor(0.5)
         .lineLimit(nil)

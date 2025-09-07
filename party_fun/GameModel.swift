@@ -86,10 +86,8 @@ struct Game: Identifiable {
         do {
             let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
-            // 根据实际JSON结构调整解码方式
             // 假设JSON包含一个cards数组
-            let decodedCards = try decoder.decode([Card].self, from: data)
-            cards = decodedCards.shuffled()
+            cards = try decoder.decode([Card].self, from: data)
         } catch {
             // 加载失败时使用模拟数据
             print("[\(self.dataFile).json文件]加载卡片数据失败: \(error.localizedDescription)")
@@ -106,7 +104,7 @@ struct Word: Decodable {
 }
 
 struct Line: Decodable {
-    let words: [Word]
+    let line: [Word]
 }
 struct Card: Decodable {
     let title: Line?

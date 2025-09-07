@@ -31,7 +31,7 @@ struct CardFrontView: View {
                         lines: card.body!,
                         foregroundColor: currentImagePair.foreground,
                         width: AppConfigs.cardWidth - 40,
-                    )
+                    ).border(Color.red)
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
                 Spacer()
@@ -41,13 +41,23 @@ struct CardFrontView: View {
                         lines: card.body2!,
                         foregroundColor: currentImagePair.foreground,
                         width: AppConfigs.cardWidth - 40,
-                    )
+                    ).border(Color.red)
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
-                Spacer()
             }
             .padding(20) // 添加内边距
             .frame(maxWidth: AppConfigs.cardWidth, maxHeight: AppConfigs.cardHeight)
+            
+            // Smile图片放置在右上角
+            if let smile = AppConfigs.loadImage(name: "face.png") {
+                Image(uiImage: smile)
+                    .renderingMode(.template) // 设置为模板模式，使foregroundColor生效
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 60)
+                    .position(x: AppConfigs.cardWidth, y: 60) // 右上角位置，考虑圆角和内边距
+                    .foregroundColor(currentImagePair.foreground)
+            }
             
         }
         .background {

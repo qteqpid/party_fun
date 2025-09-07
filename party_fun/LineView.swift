@@ -14,7 +14,7 @@ struct LineView: View {
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 4) {
-            ForEach(Array(line.words.enumerated()), id: \.offset) { _, word in
+            ForEach(Array(line.line.enumerated()), id: \.offset) { _, word in
                 Text(word.content)
                     .font(.system(size: word.fontSize))
                     .fontWeight(.bold)
