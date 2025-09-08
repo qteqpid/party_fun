@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct RatingAlert: ViewModifier {
+    @Environment(\.requestReview) var requestReview
     @Binding var isPresented: Bool
     
     func body(content: Content) -> some View {
@@ -15,8 +17,7 @@ struct RatingAlert: ViewModifier {
             .alert("喜欢这个app的设计吗？", isPresented: $isPresented) {
                 Button("不喜欢") {}
                 Button("喜欢") {
-                    // 跳转到App Store评分页面
-                    AppRatingManager.shared.openAppStoreReview()
+                    requestReview()
                 }
             } message: {
                 Text("觉得还不错的话帮忙打个分吧~ 😘")

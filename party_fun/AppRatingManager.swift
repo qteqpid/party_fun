@@ -19,8 +19,8 @@ class AppRatingManager {
     private let hasShownRatingAlertKey = "has_shown_rating_alert"
     
     // 触发条件阈值
-    private let isAppRatingEnabled = false
-    private let requiredLaunchCount = 2
+    private let isAppRatingEnabled = true
+    private let requiredLaunchCount = 3
     private let requiredButtonTapCount = 5
     
     // 获取和增加启动次数
@@ -68,16 +68,5 @@ class AppRatingManager {
         
         return shouldShow
     }
-    
-    // 跳转到App Store评分页面
-    func openAppStoreReview() {
-        // 替换为实际的App Store ID
-        let appStoreId = "6752017904"
-        
-        if let url = URL(string: "https://apps.apple.com/cn/app/id\(appStoreId)?action=write-review") {
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        }
-    }
+
 }
