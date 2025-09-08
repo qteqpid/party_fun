@@ -15,7 +15,7 @@ struct CardFrontView: View {
         ZStack {
             // 内容容器，设置最大宽度和内边距
             VStack {
-                HStack {
+                HStack(alignment: .top) {
                     // card.title
                     if let card = card, let _ = card.title {
                         LineView(
@@ -32,11 +32,12 @@ struct CardFrontView: View {
                             .renderingMode(.template) // 设置为模板模式，使foregroundColor生效
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 60, height: 60)
+                            .frame(width: 60, height: 50)
                             .foregroundColor(currentImagePair.foreground)
                     }
                 }
                 .frame(width: AppConfigs.cardWidth - 40)
+                
                 
                 Spacer()
                 // card.body
