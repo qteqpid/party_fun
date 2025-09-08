@@ -17,6 +17,8 @@ extension UINavigationController {
     }
 }
 struct ContentView: View {
+    @State private var showRatingAlert = false // 控制是否显示评分弹窗
+    
     // init() {
     //     let appearance = UINavigationBarAppearance()
     //     appearance.backgroundColor = .clear
@@ -87,6 +89,13 @@ struct ContentView: View {
                     .ignoresSafeArea()
             }
         }
+        .onAppear {
+            // 在首页加载时检查是否应该显示评分弹窗
+            if AppRatingManager.shared.shouldShowRatingAlert() {
+                showRatingAlert = true
+            }
+        }
+        .ratingAlert(isPresented: $showRatingAlert)
     }
 }
 

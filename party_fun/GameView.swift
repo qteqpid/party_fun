@@ -31,6 +31,7 @@ struct GameView: View {
     @State private var rotationY = 0.0
     @State private var currentImagePair = (background: Game.defaultImagePairs.first?.0, foreground: Color.white)
     @State private var currentImageIndex = 0 // 添加索引变量用于循环选择图片
+    @State private var showRatingAlert = false // 控制是否显示评分弹窗
     
     // 预加载背景图片以提高性能
     private let bgImage: UIImage? = AppConfigs.loadImage(name: AppConfigs.bgImage)
@@ -74,10 +75,16 @@ struct GameView: View {
             // 使用独立的ButtonView组件
             ButtonView(
                 isActive: isFlipping,
-                onButtonTap: {
+                onButtonTap: {            
                     // 切换翻牌状态
                     if isFlipping {
                         stopFlipping()
+                        // 增加按钮点击次数
+                        AppRatingManager.shared.incrementButtonTapCount()
+                        // 检查是否应该显示评分弹窗
+                        if AppRatingManager.shared.shouldShowRatingAlert() {
+                            showRatingAlert = true
+                        }
                     } else {
                         startFlipping()
                     }
@@ -97,6 +104,7 @@ struct GameView: View {
                     .ignoresSafeArea()
             }
         }
+        .ratingAlert(isPresented: $showRatingAlert)
     }
     
     // 开始翻转卡片

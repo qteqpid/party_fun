@@ -5,7 +5,7 @@ import UIKit
 
 struct AppConfigs {
     
-    static let isDebug = true
+    static let isDebug = false
 
     static var gameCoverWidth: CGFloat {
         // 返回屏幕宽度除以3

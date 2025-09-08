@@ -1,5 +1,302 @@
 [
   {
+    "title": {"line": [{"content": "个人向的话题", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [
+			  {"content": "旅行时", "fontSize": 30, "hasUnderline": false}
+	  ]},
+      {"line": [{"content": "你更看重", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "自然", "fontSize": 40, "hasUnderline": true},
+			  {"content": "还是", "fontSize": 30, "hasUnderline": false},
+			  {"content": "人文", "fontSize": 40, "hasUnderline": true},
+			  {"content": "？", "fontSize": 30, "hasUnderline": false}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "预算/体验、计划/随性、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "目的地/沿途风景、美食/美景", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "假如……", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "只带一件东西去", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "见女友的父母", "fontSize": 40, "hasUnderline": true}
+	  ]},
+      {"line": [{"content": "你会带什么？", "fontSize": 30, "hasUnderline": false}]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "领导家做客、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "荒岛求生、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "相亲、去约会", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "情绪和自我认知", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "你如何", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [{"content": "看待自己", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "所在的行业", "fontSize": 40, "hasUnderline": true},
+			  {"content": "？", "fontSize": 30, "hasUnderline": false}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "所在的城市、的职业规划、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "的认知水平、的能力空白", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "个人向的话题", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [
+			  {"content": "推荐一", "fontSize": 30, "hasUnderline": false},
+			  {"content": "家", "fontSize": 40, "hasUnderline": true}
+	  ]},
+      {"line": [{"content": "你最喜欢的", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "餐厅", "fontSize": 40, "hasUnderline": true},
+			  {"content": "？", "fontSize": 30, "hasUnderline": false}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "个/综艺、部/剧集、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "本/书、个/旅行目的地", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "情绪和自我认知", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "你有哪些", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "保持健康", "fontSize": 40, "hasUnderline": true}
+	  ]},
+      {"line": [{"content": "的好习惯？", "fontSize": 30, "hasUnderline": false}]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "放松身心、提高效率、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "坚持多年、想要养成", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "聊点爆炸的", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "领导说", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "要把公司当家", "fontSize": 40, "hasUnderline": true}
+	  ]},
+      {"line": [{"content": "你会如何回应？", "fontSize": 30, "hasUnderline": false}]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "我对你动心了、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "你是个笨蛋、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "要和我一起跳槽吗", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "聊点爆炸的", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "用一句话", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [{"content": "分享一个", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "职场心得", "fontSize": 40, "hasUnderline": true}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "恋爱心得、消费指南、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "人生建议、沟通技巧", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "情绪和自我认知", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "你想拥有", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "无限的", "fontSize": 30, "hasUnderline": false},
+			  {"content": "时间", "fontSize": 40, "hasUnderline": true},
+			  {"content": "吗？", "fontSize": 30, "hasUnderline": false}
+	  ]},
+      {"line": [{"content": "为什么？", "fontSize": 30, "hasUnderline": false}]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "金钱、权力、智慧", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "假如……", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "假如伴侣的收入", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [{"content": "是你的10倍", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "你", "fontSize": 30, "hasUnderline": false},
+			  {"content": "还工作", "fontSize": 40, "hasUnderline": true},
+			  {"content": "吗？", "fontSize": 30, "hasUnderline": false}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "会全职做家务、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "会心里不平衡、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "会去创业、会去追寻梦想", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "情绪和自我认知", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "你会接受", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [{"content": "伴侣为了赚钱", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "频繁加班", "fontSize": 40, "hasUnderline": true},
+			  {"content": "吗？", "fontSize": 30, "hasUnderline": false}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "长期熬夜、长期不陪你", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "聊点爆炸的", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "你最", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [{"content": "接受不了的", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "校园文化", "fontSize": 40, "hasUnderline": true},
+			  {"content": "是？", "fontSize": 30, "hasUnderline": false}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "公司文化、沟通方式、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "领导风格、一类人", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "聊点爆炸的", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "你有", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [{"content": "哪些独特的", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "摸鱼", "fontSize": 40, "hasUnderline": true},
+			  {"content": "技巧？", "fontSize": 30, "hasUnderline": false}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "识人、处事、搞钱、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "撩妹、勾搭帅哥", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "情绪和自我认知", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "最近碰到过", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "很", "fontSize": 30, "hasUnderline": false},
+			  {"content": "生气", "fontSize": 40, "hasUnderline": true},
+			  {"content": "的事吗？", "fontSize": 30, "hasUnderline": false}
+	  ]},
+      {"line": [{"content": "发生了什么？", "fontSize": 30, "hasUnderline": false}]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "开心、害羞、后悔、感动", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "个人向的话题", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "你的童年", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "最", "fontSize": 30, "hasUnderline": false},
+			  {"content": "宝贵", "fontSize": 40, "hasUnderline": true},
+			  {"content": "的", "fontSize": 30, "hasUnderline": false}
+	  ]},
+      {"line": [
+			  {"content": "回忆是什么？", "fontSize": 30, "hasUnderline": false}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "好笑、尴尬、自豪、不可思议", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "对世界的看法", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "你相信", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "命中注定", "fontSize": 40, "hasUnderline": true}
+	  ]},
+      {"line": [{"content": "吗？为什么？", "fontSize": 30, "hasUnderline": false}]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "一见钟情、意识决定物质", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "聊点爆炸的", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [
+			  {"content": "收入变10倍", "fontSize": 40, "hasUnderline": true}
+	  ]},
+      {"line": [
+			  {"content": "但代价是少活10年", "fontSize": 30, "hasUnderline": false}
+	  ]},
+      {"line": [{"content": "你愿意吗？", "fontSize": 30, "hasUnderline": false}]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "成为社会名流、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "永远保持年轻、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "免费送你一套别墅", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "聊点爆炸的", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [
+			  {"content": "如果加班有", "fontSize": 30, "hasUnderline": false}
+	  ]},
+      {"line": [
+			  {"content": "三倍工资", "fontSize": 40, "hasUnderline": true}
+	  ]},
+      {"line": [{"content": "你会加班到几点？", "fontSize": 30, "hasUnderline": false}]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "老板的T恤、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "等时长的休假、", "fontSize": 16, "hasUnderline": false}]},
+      {"line": [{"content": "随便吃的宵夜", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
+    "title": {"line": [{"content": "对世界的看法", "fontSize": 14, "hasUnderline": false}]},
+    "body": [
+      {"line": [{"content": "有多少钱", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [{"content": "你才觉得自己是", "fontSize": 30, "hasUnderline": false}]},
+      {"line": [
+			  {"content": "财务自由", "fontSize": 40, "hasUnderline": true},
+			  {"content": "?", "fontSize": 30, "hasUnderline": false}
+	  ]}
+    ],
+    "body2": [
+      {"line": [{"content": "替换词:", "fontSize": 20, "hasUnderline": false}]},
+      {"line": [{"content": "小康、中产、富人", "fontSize": 16, "hasUnderline": false}]}
+    ]
+  },
+  {
     "title": {"line": [{"content": "聊点爆炸的", "fontSize": 14, "hasUnderline": false}]},
     "body": [
       {"line": [

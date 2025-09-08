@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct party_funApp: App {
+    init() {
+        // 在应用启动时增加启动次数
+        AppRatingManager.shared.incrementLaunchCount()
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack {

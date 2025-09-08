@@ -83,10 +83,10 @@ struct GameCoverView: View {
         }
         // 锁定提示弹窗 - 美化的alert
         .alert("啥时候能玩？", isPresented: $isShowingLockAlert) {
-            Button("行，再给你几天时间") {}
+            Button("加油") {}
                 .foregroundColor(Color.white)
         } message: {
-            Text("别问，问就是马上就弄好了")
+            Text("马上就好，再等我几天哈~")
                 .font(.body)
                 .foregroundColor(Color.primary)
         }
