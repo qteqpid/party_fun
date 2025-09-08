@@ -15,15 +15,29 @@ struct CardFrontView: View {
         ZStack {
             // 内容容器，设置最大宽度和内边距
             VStack {
-                // card.title
-                if let card = card, let _ = card.title {
-                    LineView(
-                        line: card.title!,
-                        foregroundColor: currentImagePair.foreground,
-                        width: AppConfigs.cardWidth - 40
-                    )
-                    .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
+                HStack {
+                    // card.title
+                    if let card = card, let _ = card.title {
+                        LineView(
+                            line: card.title!,
+                            foregroundColor: currentImagePair.foreground,
+                            width: AppConfigs.cardWidth - 120
+                        )
+                        .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
+                    }
+                    Spacer()
+                    // Smile图片放置在右上角
+                    if let smile = AppConfigs.loadImage(name: "face.png") {
+                        Image(uiImage: smile)
+                            .renderingMode(.template) // 设置为模板模式，使foregroundColor生效
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(currentImagePair.foreground)
+                    }
                 }
+                .frame(width: AppConfigs.cardWidth - 40)
+                
                 Spacer()
                 // card.body
                 if let card = card, let _ = card.body {
@@ -46,18 +60,8 @@ struct CardFrontView: View {
                 }
             }
             .padding(20) // 添加内边距
-            .frame(maxWidth: AppConfigs.cardWidth, maxHeight: AppConfigs.cardHeight)
+            .frame(width: AppConfigs.cardWidth, height: AppConfigs.cardHeight)
             
-            // Smile图片放置在右上角
-            if let smile = AppConfigs.loadImage(name: "face.png") {
-                Image(uiImage: smile)
-                    .renderingMode(.template) // 设置为模板模式，使foregroundColor生效
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 60, height: 60)
-                    .position(x: AppConfigs.cardWidth, y: 60) // 右上角位置，考虑圆角和内边距
-                    .foregroundColor(currentImagePair.foreground)
-            }
             
         }
         .background {

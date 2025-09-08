@@ -16,7 +16,7 @@ struct LineView: View {
         HStack(alignment: .bottom, spacing: 4) {
             ForEach(Array(line.line.enumerated()), id: \.offset) { _, word in
                 Text(word.content)
-                    .font(.system(size: word.fontSize))
+                    .font(.system(size: word.fontSize * AppConfigs.cardFrontFontSizeScale))
                     .fontWeight(.bold)
                     .foregroundColor(foregroundColor)
                     .underline(word.hasUnderline, color: foregroundColor)

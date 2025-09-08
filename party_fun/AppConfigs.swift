@@ -6,6 +6,15 @@ import UIKit
 struct AppConfigs {
     
     static let isDebug = false
+    
+    static var cardFrontFontSizeScale: CGFloat {
+        if isIphone {
+            return 1.0
+        } else {
+            // 调整iPad上的字体缩放比例，使用2.0而不是5.0，避免过大导致被自动缩小
+            return 2.0
+        }
+    }
 
     static var gameCoverWidth: CGFloat {
         // 返回屏幕宽度除以3
@@ -25,7 +34,8 @@ struct AppConfigs {
         if isIphone {
             return UIScreen.main.bounds.width * 3 / 4
         } else {
-            return UIScreen.main.bounds.width / 2
+            // 增加iPad上的卡片宽度，以便更好地显示放大的字体
+            return UIScreen.main.bounds.width * 2 / 3
         }
     }
 
