@@ -1,9 +1,12 @@
 import SwiftUI
-
-struct CardTruthView: View {
+/**
+支持 title + subtitle,  或者 title + answer这样的组合
+*/
+struct CardCommonView: View {
     var currentImagePair: (background: UIImage?, foreground: Color)
     var card: Card?
     var rotationY: Double
+    var contentWidth: CGFloat
 
     // 计算卡片是否应该显示（根据旋转角度）
     private var isVisible: Bool {
@@ -20,7 +23,29 @@ struct CardTruthView: View {
                     LineView(
                         line: card.title!,
                         foregroundColor: currentImagePair.foreground,
-                        width: AppConfigs.cardWidth * 0.6,
+                        width: contentWidth,
+                        alignment: .center,
+                        isSingleLine: false
+                    )
+                    .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
+                }
+                Spacer().frame(height: AppConfigs.cardHeight * 0.1)
+                // subtitle
+                if let card = card, let _ = card.subtitle {
+                    LineView(
+                        line: card.subtitle!,
+                        foregroundColor: currentImagePair.foreground,
+                        width: contentWidth,
+                        alignment: .center
+                    )
+                    .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
+                }
+                // answer
+                if let card = card, let _ = card.answer {
+                    AnswerView(
+                        line: card.answer!,
+                        foregroundColor: currentImagePair.foreground,
+                        width: contentWidth,
                         alignment: .center
                     )
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感

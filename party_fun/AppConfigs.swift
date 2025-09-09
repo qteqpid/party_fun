@@ -73,7 +73,7 @@ struct AppConfigs {
             Game(title: "真心话大冒险", cardBackground: "truth.jpg", cardForeground: ("truth_front.jpg", "#ffffff"), dataFile: "truth", isEnabled: true, gameName: .truth),
             Game(title: "海龟汤来了", cardBackground: "haigui.jpg", cardForeground: ("haigui_front.png", "#ffffff"), dataFile: "haigui", isEnabled: true, gameName: .haigui),
             Game(title: "整蛊惩罚", cardBackground: "trick.png", cardForeground: nil, dataFile: "trick", isEnabled: false, gameName: .trick),
-            Game(title: "断句挑战", cardBackground: "cut.png", cardForeground: nil, dataFile: "cut", isEnabled: false, gameName: .cut),
+            Game(title: "断句挑战", cardBackground: "cut.png", cardForeground: nil, dataFile: "cut", isEnabled: true, gameName: .cut),
             Game(title: "你做我猜", cardBackground: "guess.png", cardForeground: (nil, "#ffffff"), dataFile: "guess", isEnabled: false, gameName: .guess),
             Game(title: "表情猜猜乐", cardBackground: "emoji.png", cardForeground: nil, dataFile: "emoji", isEnabled: false, gameName: .emoji)
         ]

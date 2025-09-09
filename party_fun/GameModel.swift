@@ -109,10 +109,12 @@ struct Word: Decodable {
 struct Line: Decodable {
     let line: [Word]
 }
+
 struct Card: Decodable {
     let title: Line?
     let subtitle: Line?
     let image: String?
     let body: [Line]?
     let body2: [Line]?
+    let answer: String?
 }

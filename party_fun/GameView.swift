@@ -81,10 +81,18 @@ struct GameView: View {
                         rotationY: rotationY
                     )
                 } else if game.gameName == .truth {
-                    CardTruthView(
+                    CardCommonView(
                         currentImagePair: currentImagePair,
                         card: card,
-                        rotationY: rotationY
+                        rotationY: rotationY,
+                        contentWidth: AppConfigs.cardWidth * 0.6
+                    )
+                } else if game.gameName == .cut || game.gameName == .emoji {
+                    CardCommonView(
+                        currentImagePair: currentImagePair,
+                        card: card,
+                        rotationY: rotationY,
+                        contentWidth: AppConfigs.cardWidth * 0.8
                     )
                 } else {
                     // TODO: 为其他游戏类型提供默认视图  
