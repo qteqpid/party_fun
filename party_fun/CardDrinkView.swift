@@ -23,7 +23,7 @@ struct CardDrinkView: View {
                         foregroundColor: currentImagePair.foreground,
                         width: AppConfigs.cardWidth * 0.6,
                         alignment: .center
-                    ).border(Color.red)
+                    )
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
                 Spacer().frame(height: AppConfigs.cardHeight * 0.2)
@@ -35,7 +35,7 @@ struct CardDrinkView: View {
                         width: AppConfigs.cardWidth * 0.6, // 减小宽度确保不超过背景图片边缘
                         alignment: .center,
                         isSingleLine: false
-                    ).border(Color.yellow)
+                    )
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
                 Spacer()
