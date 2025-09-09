@@ -85,14 +85,16 @@ struct GameView: View {
                         currentImagePair: currentImagePair,
                         card: card,
                         rotationY: rotationY,
-                        contentWidth: AppConfigs.cardWidth * 0.6
+                        contentWidth: AppConfigs.cardWidth * 0.6,
+                        isTitleSingleLine: true
                     )
                 } else if game.gameName == .cut || game.gameName == .emoji {
                     CardCommonView(
                         currentImagePair: currentImagePair,
                         card: card,
                         rotationY: rotationY,
-                        contentWidth: AppConfigs.cardWidth * 0.8
+                        contentWidth: AppConfigs.cardWidth * 0.8,
+                        isTitleSingleLine: false
                     )
                 } else {
                     // TODO: 为其他游戏类型提供默认视图  

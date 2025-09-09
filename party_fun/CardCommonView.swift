@@ -7,6 +7,8 @@ struct CardCommonView: View {
     var card: Card?
     var rotationY: Double
     var contentWidth: CGFloat
+    var isTitleSingleLine: Bool
+    @State private var isShowingAnswer = false
 
     // 计算卡片是否应该显示（根据旋转角度）
     private var isVisible: Bool {
@@ -25,7 +27,7 @@ struct CardCommonView: View {
                         foregroundColor: currentImagePair.foreground,
                         width: contentWidth,
                         alignment: .center,
-                        isSingleLine: false
+                        isSingleLine: isTitleSingleLine
                     )
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
@@ -46,7 +48,8 @@ struct CardCommonView: View {
                         line: card.answer!,
                         foregroundColor: currentImagePair.foreground,
                         width: contentWidth,
-                        alignment: .center
+                        alignment: .center,
+                        isShowingAnswer: $isShowingAnswer
                     )
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
@@ -54,6 +57,10 @@ struct CardCommonView: View {
             }
             .padding(20) // 添加内边距
             .frame(width: AppConfigs.cardWidth, height: AppConfigs.cardHeight)
+            // 当卡片变化时重置答案显示状态
+            .onChange(of: card) {
+                isShowingAnswer = false
+            }
         }
         .background {
             // 卡片正面背景 - 支持图片或颜色

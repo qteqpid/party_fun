@@ -100,17 +100,17 @@ struct Game: Identifiable {
 }
 
 
-struct Word: Decodable {
+struct Word: Decodable, Equatable {
     let content: String
     let fontSize: CGFloat
     let hasUnderline: Bool
 }
 
-struct Line: Decodable {
+struct Line: Decodable, Equatable {
     let line: [Word]
 }
 
-struct Card: Decodable {
+struct Card: Decodable, Equatable {
     let title: Line?
     let subtitle: Line?
     let image: String?

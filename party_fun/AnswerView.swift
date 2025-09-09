@@ -7,7 +7,7 @@ struct AnswerView: View {
     var width: CGFloat
     var alignment: TextAlignment = .center // 默认居中对齐
     
-    @State private var isShowingAnswer = false
+    @Binding var isShowingAnswer: Bool
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 4) {
@@ -23,7 +23,7 @@ struct AnswerView: View {
                     .font(.system(size: 18 * AppConfigs.cardFrontFontSizeScale))
                     .fontWeight(.bold)
                     .foregroundColor(foregroundColor)
-                    .underline(true, color: foregroundColor)
+                    .underline(!isShowingAnswer, color: foregroundColor)
                     .minimumScaleFactor(0.5) // 允许字体缩小到原大小的50%
                     .lineLimit(nil) // 允许多行显示
             }
