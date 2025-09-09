@@ -1,5 +1,9 @@
 [
   {
+    "title": {"line": [{"content": "你是明星", "fontSize": 24, "hasUnderline": false}]},
+    "subtitle": {"line": [{"content": "指定任意一个玩家表演一个才艺，对方若拒绝则罚酒一杯。", "fontSize": 20, "hasUnderline": false}]}
+  },
+  {
     "title": {"line": [{"content": "鱼塘", "fontSize": 24, "hasUnderline": false}]},
     "subtitle": {"line": [{"content": "指定一个玩家在微信聊天记录里搜“宝贝”，搜出至少一个人则对方喝一杯。", "fontSize": 20, "hasUnderline": false}]}
   },
