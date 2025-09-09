@@ -9,6 +9,7 @@ enum GameName: String, CaseIterable {
     case emoji = "emoji"
     case cut = "cut"
     case haigui = "haigui"
+    case truth = "truth"
 }
 
 // 定义卡片数据模型

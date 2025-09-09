@@ -80,6 +80,12 @@ struct GameView: View {
                         card: card,
                         rotationY: rotationY
                     )
+                } else if game.gameName == .truth {
+                    CardTruthView(
+                        currentImagePair: currentImagePair,
+                        card: card,
+                        rotationY: rotationY
+                    )
                 } else {
                     // TODO: 为其他游戏类型提供默认视图  
                 }
