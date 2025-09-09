@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CardDrinkView: View {
+struct CardHaiguiView: View {
     var currentImagePair: (background: UIImage?, foreground: Color)
     var card: Card?
     var rotationY: Double
@@ -15,7 +15,7 @@ struct CardDrinkView: View {
         ZStack {
             // 内容容器，设置最大宽度和内边距
             VStack {
-                Spacer().frame(height: AppConfigs.cardHeight * 0.3)
+                Spacer()
                 // card.title
                 if let card = card, let _ = card.title {
                     LineView(
@@ -26,19 +26,23 @@ struct CardDrinkView: View {
                     )
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
-                Spacer().frame(height: AppConfigs.cardHeight * 0.15)
-                // card.subtitle - 减小宽度以确保不超过背景图片边缘
-                if let card = card, let _ = card.subtitle {
-                    LineView(
-                        line: card.subtitle!,
-                        foregroundColor: currentImagePair.foreground,
-                        width: AppConfigs.cardWidth * 0.6, // 减小宽度确保不超过背景图片边缘
-                        alignment: .center,
-                        isSingleLine: false
-                    )
-                    .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
+                // card.image
+                if let card = card, let _ = card.image {
+                    if let qr_img = AppConfigs.loadImage(name: card.image) {
+                    Image(uiImage: qr_img)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: AppConfigs.cardWidth * 0.15, height: AppConfigs.cardWidth * 0.15)
+                        .shadow(radius: 15)
+                        .onLongPressGesture {
+                            // 长按打开App Store页面
+                            // 使用itms-apps协议直接打开应用商店
+                            if let url = URL(string: "itms-apps://itunes.apple.com/app/id6749227316") {
+                                UIApplication.shared.open(url)
+                            }
+                        }
                 }
-                Spacer()
+                }
             }
             .padding(20) // 添加内边距
             .frame(width: AppConfigs.cardWidth, height: AppConfigs.cardHeight)

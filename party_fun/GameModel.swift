@@ -8,6 +8,7 @@ enum GameName: String, CaseIterable {
     case guess = "guess"
     case emoji = "emoji"
     case cut = "cut"
+    case haigui = "haigui"
 }
 
 // 定义卡片数据模型
@@ -79,8 +80,9 @@ struct Game: Identifiable {
     }
 
     mutating func loadCards() {
-        guard let url = Bundle.main.url(forResource: self.dataFile, withExtension: "json") else {
-            print("找不到\(self.dataFile).json文件")
+        // dataFile不是可选类型，直接使用
+        guard let url = Bundle.main.url(forResource: dataFile, withExtension: "json") else {
+            print("找不到\(dataFile).json文件")
             return
         }
         do {
@@ -90,7 +92,7 @@ struct Game: Identifiable {
             cards = try decoder.decode([Card].self, from: data)
         } catch {
             // 加载失败时使用模拟数据
-            print("[\(self.dataFile).json文件]加载卡片数据失败: \(error.localizedDescription)")
+            print("[\(dataFile).json文件]加载卡片数据失败: \(error.localizedDescription)")
             cards = []
         }
     }
@@ -109,6 +111,7 @@ struct Line: Decodable {
 struct Card: Decodable {
     let title: Line?
     let subtitle: Line?
+    let image: String?
     let body: [Line]?
     let body2: [Line]?
 }

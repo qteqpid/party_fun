@@ -70,6 +70,7 @@ struct AppConfigs {
         var games = [
             Game(title: "聊天盲盒", cardBackground: "chat.png", cardForeground: nil, dataFile: "chat", isEnabled: true, gameName: .chat),
             Game(title: "喝酒之弈", cardBackground: "drink.png", cardForeground: ("drink_front.png", "#ffffff"), dataFile: "drink", isEnabled: true, gameName: .drink),
+            Game(title: "海龟汤来了", cardBackground: "haigui.jpg", cardForeground: ("haigui_front.png", "#ffffff"), dataFile: "haigui", isEnabled: true, gameName: .haigui),
             Game(title: "整蛊惩罚", cardBackground: "trick.png", cardForeground: nil, dataFile: "trick", isEnabled: false, gameName: .trick),
             Game(title: "断句挑战", cardBackground: "cut.png", cardForeground: nil, dataFile: "cut", isEnabled: false, gameName: .cut),
             Game(title: "你做我猜", cardBackground: "guess.png", cardForeground: (nil, "#ffffff"), dataFile: "guess", isEnabled: false, gameName: .guess),
