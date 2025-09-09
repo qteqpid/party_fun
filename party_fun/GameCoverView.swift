@@ -56,7 +56,7 @@ struct GameCoverView: View {
                     Spacer()
                     // 半透明蒙层
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.black.opacity(0.5))
+                        .fill(Color.black.opacity(0.6))
                         .frame(width: AppConfigs.gameCoverWidth, height: AppConfigs.gameCoverHeight * 0.2)
                         // 添加点击手势
                         .onTapGesture {

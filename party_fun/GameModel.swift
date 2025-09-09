@@ -108,6 +108,7 @@ struct Line: Decodable {
 }
 struct Card: Decodable {
     let title: Line?
+    let subtitle: Line?
     let body: [Line]?
     let body2: [Line]?
 }

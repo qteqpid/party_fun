@@ -1,13 +1,6 @@
-//
-//  CardFrontView.swift
-//  party_fun
-//
-//  Created by Gongliang Zhang on 2025/9/6.
-//
-
 import SwiftUI
 
-struct CardFrontView: View {
+struct CardDrinkView: View {
     var currentImagePair: (background: UIImage?, foreground: Color)
     var card: Card?
     var rotationY: Double
@@ -22,24 +15,27 @@ struct CardFrontView: View {
         ZStack {
             // 内容容器，设置最大宽度和内边距
             VStack {
-                Spacer()
+                Spacer().frame(height: AppConfigs.cardHeight * 0.3)
                 // card.title
                 if let card = card, let _ = card.title {
                     LineView(
                         line: card.title!,
                         foregroundColor: currentImagePair.foreground,
-                        width: AppConfigs.cardWidth - 40
-                    )
+                        width: AppConfigs.cardWidth * 0.6,
+                        alignment: .center
+                    ).border(Color.red)
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
-                Spacer()
-                // card.body
-                if let card = card, let _ = card.body {
-                    MultiLineView(
-                        lines: card.body!,
+                Spacer().frame(height: AppConfigs.cardHeight * 0.2)
+                // card.subtitle - 减小宽度以确保不超过背景图片边缘
+                if let card = card, let _ = card.subtitle {
+                    LineView(
+                        line: card.subtitle!,
                         foregroundColor: currentImagePair.foreground,
-                        width: AppConfigs.cardWidth - 40,
-                    )
+                        width: AppConfigs.cardWidth * 0.6, // 减小宽度确保不超过背景图片边缘
+                        alignment: .center,
+                        isSingleLine: false
+                    ).border(Color.yellow)
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }
                 Spacer()
@@ -53,20 +49,19 @@ struct CardFrontView: View {
                 // 使用图片背景
                 Image(uiImage: cardForeground)
                     .resizable()
-                    .scaledToFill()
-                    .clipped()
+                    .scaledToFit()
+                    .frame(width: AppConfigs.cardWidth, height: AppConfigs.cardHeight)
+                    .cornerRadius(25)
+                    .shadow(radius: 15)
             } else {
-                // 纯色背景（默认为黄色）
-                Color.yellow
+                // 使用颜色背景（保持原有逻辑）
+                RoundedRectangle(cornerRadius: 25)
+                    .fill(Color.black)
+                    .shadow(radius: 15)
+                    .frame(width: AppConfigs.cardWidth, height: AppConfigs.cardHeight)
             }
         }
-        .cornerRadius(15)
-        .shadow(radius: 10)
-        .rotation3DEffect(
-            Angle(degrees: rotationY),
-            axis: (x: 0, y: 1, z: 0)
-        )
         .opacity(isVisible ? 1 : 0)
-        .animation(nil, value: rotationY) // 禁用隐式动画，使用显式动画控制
+        .rotation3DEffect(.degrees(rotationY + 180), axis: (x: 0, y: 1, z: 0))
     }
 }

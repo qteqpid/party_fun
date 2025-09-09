@@ -61,12 +61,22 @@ struct GameView: View {
                     rotationY: rotationY
                 )
                 
-                // 使用独立的CardFrontView组件显示卡片正面
-                CardFrontView(
-                    currentImagePair: currentImagePair,
-                    card: card,
-                    rotationY: rotationY
-                )
+                // 根据游戏名称显示不同的卡片正面视图
+                if game.gameName == .chat {
+                    CardChatView(
+                        currentImagePair: currentImagePair,
+                        card: card,
+                        rotationY: rotationY
+                    )
+                } else if game.gameName == .drink {
+                    CardDrinkView(
+                        currentImagePair: currentImagePair,
+                        card: card,
+                        rotationY: rotationY
+                    )
+                } else {
+                    // TODO: 为其他游戏类型提供默认视图  
+                }
             }
             
             Spacer().frame(height: 40)
