@@ -88,7 +88,7 @@ struct GameView: View {
                         contentWidth: AppConfigs.cardWidth * 0.6,
                         isTitleSingleLine: true
                     )
-                } else if game.gameName == .cut || game.gameName == .emoji {
+                } else if game.gameName == .cut {
                     CardCommonView(
                         currentImagePair: currentImagePair,
                         card: card,
@@ -96,8 +96,16 @@ struct GameView: View {
                         contentWidth: AppConfigs.cardWidth * 0.8,
                         isTitleSingleLine: false
                     )
+                } else if game.gameName == .emoji {
+                    CardCommonView(
+                        currentImagePair: currentImagePair,
+                        card: card,
+                        rotationY: rotationY,
+                        contentWidth: AppConfigs.cardWidth * 0.8,
+                        isTitleSingleLine: true
+                    )
                 } else {
-                    // TODO: 为其他游戏类型提供默认视图  
+                    // TODO: 为其他游戏类型提供默认视图
                 }
             }
             
