@@ -59,9 +59,6 @@ struct ContentView: View {
                                         GameCoverView(game: game)
                                     }
                                     .buttonStyle(PlainButtonStyle())
-                                } else {
-                                    // 游戏禁用时不添加导航链接
-                                    GameCoverView(game: game)
                                 }
                             }
                         }

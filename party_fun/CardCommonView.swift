@@ -38,7 +38,8 @@ struct CardCommonView: View {
                         line: card.subtitle!,
                         foregroundColor: currentImagePair.foreground,
                         width: contentWidth,
-                        alignment: .center
+                        alignment: .center,
+                        isSingleLine: false
                     )
                     .shadow(color: Color.gray.opacity(0.7), radius: 1, x: 1, y: 1) // 阴影增强立体感
                 }

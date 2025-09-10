@@ -22,35 +22,18 @@ struct BackgroundImageView: View {
     }
 }
 
-// 游戏视图
-struct GameView: View {
+// 单卡片视图组件
+struct SingleCardView: View {
     let game: Game
-    
-    @State private var isFlipping = false
-    @State private var card: Card? = nil
-    @State private var rotationY = 0.0
-    @State private var currentImagePair = (background: Game.defaultImagePairs.first?.0, foreground: Color.white)
-    @State private var currentImageIndex = 0 // 添加索引变量用于循环选择图片
-    @State private var showRatingAlert = false // 控制是否显示评分弹窗
-    
-    // 预加载背景图片以提高性能
-    private let bgImage: UIImage? = AppConfigs.loadImage(name: AppConfigs.bgImage)
+    let card: Card?
+    let rotationY: Double
+    let currentImagePair: (background: UIImage?, foreground: Color)
+    let isFlipping: Bool
+    let onButtonTap: () -> Void
     
     var body: some View {
         VStack {
-            // 标题栏
-            HStack {
-                Spacer()
-                Text(game.title)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .padding(.vertical, 10)
-                Spacer()
-            }
-            .padding()
-            
-            Spacer()
+
             
             // 大卡片 - 正反面设计
             ZStack {
@@ -96,7 +79,7 @@ struct GameView: View {
                         contentWidth: AppConfigs.cardWidth * 0.8,
                         isTitleSingleLine: false
                     )
-                } else if game.gameName == .emoji {
+                } else if game.gameName == .emoji || game.gameName == .trick {
                     CardCommonView(
                         currentImagePair: currentImagePair,
                         card: card,
@@ -115,7 +98,49 @@ struct GameView: View {
             // 使用独立的ButtonView组件
             ButtonView(
                 isActive: isFlipping,
-                onButtonTap: {            
+                onButtonTap: onButtonTap
+            )
+        }
+    }
+}
+
+// 游戏视图
+struct GameView: View {
+    let game: Game
+    
+    @State private var isFlipping = false
+    @State private var card: Card? = nil
+    @State private var rotationY = 0.0
+    @State private var currentImagePair = (background: Game.defaultImagePairs.first?.0, foreground: Color.white)
+    @State private var currentImageIndex = 0 // 添加索引变量用于循环选择图片
+    @State private var showRatingAlert = false // 控制是否显示评分弹窗
+    
+    // 预加载背景图片以提高性能
+    private let bgImage: UIImage? = AppConfigs.loadImage(name: AppConfigs.bgImage)
+    
+    var body: some View {
+        VStack {
+            // 标题栏
+            HStack {
+                Spacer()
+                Text(game.title)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .padding(.vertical, 10)
+                Spacer()
+            }
+            .padding()
+            
+            Spacer()
+
+            SingleCardView(
+                game: game,
+                card: card,
+                rotationY: rotationY,
+                currentImagePair: currentImagePair,
+                isFlipping: isFlipping,
+                onButtonTap: {
                     // 切换翻牌状态
                     if isFlipping {
                         stopFlipping()
