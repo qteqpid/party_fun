@@ -1,5 +1,40 @@
 import SwiftUI
 
+struct Word: Decodable, Equatable {
+    let content: String
+    let fontSize: CGFloat
+    let hasUnderline: Bool
+}
+
+struct Line: Decodable, Equatable {
+    let line: [Word]
+}
+
+// 主题类型枚举
+enum TopicType: String, Decodable, CaseIterable  {
+    case animal
+    case food
+}
+
+// 主题结构体，管理主题相关信息
+struct Topic: Decodable, Equatable, Identifiable {
+    let id = UUID()
+    let topicType: TopicType
+    let topicName: String
+    let topicImage: String
+}
+
+struct Card: Decodable, Equatable {
+    let title: Line?
+    let subtitle: Line?
+    let image: String?
+    let body: [Line]?
+    let body2: [Line]?
+    let answer: String?
+    let topicType: TopicType? // 改为使用TopicType而不是Topic
+}
+
+
 // 游戏名称枚举
 enum GameName: String, CaseIterable {
     case chat = "chat"
@@ -21,6 +56,7 @@ struct Game: Identifiable {
     let dataFile: String
     let isEnabled: Bool
     let gameName: GameName // 新增字段，存储游戏名称枚举
+    let topics: [Topic]?
     var cards: [Card] = []
     var cardForegroundImagePair: [(UIImage?, Color)] = []
 
@@ -100,21 +136,3 @@ struct Game: Identifiable {
 }
 
 
-struct Word: Decodable, Equatable {
-    let content: String
-    let fontSize: CGFloat
-    let hasUnderline: Bool
-}
-
-struct Line: Decodable, Equatable {
-    let line: [Word]
-}
-
-struct Card: Decodable, Equatable {
-    let title: Line?
-    let subtitle: Line?
-    let image: String?
-    let body: [Line]?
-    let body2: [Line]?
-    let answer: String?
-}

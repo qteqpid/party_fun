@@ -44,7 +44,7 @@ struct CardHaiguiView: View {
                 }
                 }
             }
-            .padding(20) // 添加内边距
+            .padding(40) // 添加内边距
             .frame(width: AppConfigs.cardWidth, height: AppConfigs.cardHeight)
         }
         .background {

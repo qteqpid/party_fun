@@ -68,14 +68,19 @@ struct AppConfigs {
     static let games: [Game] = {
         // 创建游戏实例 - 为所有游戏添加cardForeground参数
         var games = [
-            Game(title: "聊天盲盒", cardBackground: "chat.png", cardForeground: nil, dataFile: "chat", isEnabled: true, gameName: .chat),
-            Game(title: "表情猜猜乐", cardBackground: "emoji.png", cardForeground: nil, dataFile: "emoji", isEnabled: true, gameName: .emoji),
-            Game(title: "喝酒之弈", cardBackground: "drink.png", cardForeground: ("drink_front.png", "#ffffff"), dataFile: "drink", isEnabled: true, gameName: .drink),
-            Game(title: "整蛊惩罚", cardBackground: "trick.png", cardForeground: ("trick_front.jpg", "#2d2d2d"), dataFile: "trick", isEnabled: true, gameName: .trick),
-            Game(title: "断句挑战", cardBackground: "cut.png", cardForeground: ("cut_front.jpg", "#ffffff"), dataFile: "cut", isEnabled: true, gameName: .cut),
-            Game(title: "真心话大冒险", cardBackground: "truth.jpg", cardForeground: ("truth_front.jpg", "#ffffff"), dataFile: "truth", isEnabled: true, gameName: .truth),
-            Game(title: "海龟汤来了", cardBackground: "haigui.jpg", cardForeground: ("haigui_front.png", "#ffffff"), dataFile: "haigui", isEnabled: true, gameName: .haigui),
-            Game(title: "你做我猜", cardBackground: "guess.png", cardForeground: (nil, "#ffffff"), dataFile: "guess", isEnabled: false, gameName: .guess)
+            Game(title: "聊天盲盒", cardBackground: "chat.png", cardForeground: nil, dataFile: "chat", isEnabled: true, gameName: .chat, topics: nil),
+            Game(title: "表情猜猜乐", cardBackground: "emoji.png", cardForeground: nil, dataFile: "emoji", isEnabled: true, gameName: .emoji, topics: nil),
+            Game(title: "喝酒之弈", cardBackground: "drink.png", cardForeground: ("drink_front.png", "#ffffff"), dataFile: "drink", isEnabled: true, gameName: .drink, topics: nil),
+            Game(title: "整蛊惩罚", cardBackground: "trick.png", cardForeground: ("trick_front.jpg", "#2d2d2d"), dataFile: "trick", isEnabled: true, gameName: .trick, topics: nil),
+            Game(title: "断句挑战", cardBackground: "cut.png", cardForeground: ("cut_front.jpg", "#ffffff"), dataFile: "cut", isEnabled: true, gameName: .cut, topics: nil),
+            Game(title: "真心话大冒险", cardBackground: "truth.jpg", cardForeground: ("truth_front.jpg", "#ffffff"), dataFile: "truth", isEnabled: true, gameName: .truth, topics: nil),
+            Game(title: "海龟汤来了", cardBackground: "haigui.jpg", cardForeground: ("haigui_front.png", "#ffffff"), dataFile: "haigui", isEnabled: false, gameName: .haigui, topics: nil),
+            Game(title: "你做我猜", cardBackground: "guess.png", cardForeground: (nil, "#ffffff"), dataFile: "guess", isEnabled: true, gameName: .guess,
+                topics: [
+                    Topic(topicType: .animal, topicName: "动物", topicImage: "cut.png"),
+                    Topic(topicType: .food, topicName: "食物", topicImage: "trick.png")
+                ]
+            )
 
         ]
         
