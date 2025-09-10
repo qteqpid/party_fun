@@ -79,13 +79,21 @@ struct SingleCardView: View {
                         contentWidth: AppConfigs.cardWidth * 0.8,
                         isTitleSingleLine: false
                     )
-                } else if game.gameName == .emoji || game.gameName == .trick {
+                } else if game.gameName == .emoji {
                     CardCommonView(
                         currentImagePair: currentImagePair,
                         card: card,
                         rotationY: rotationY,
                         contentWidth: AppConfigs.cardWidth * 0.8,
                         isTitleSingleLine: true
+                    )
+                } else if game.gameName == .trick {
+                    CardCommonView(
+                        currentImagePair: currentImagePair,
+                        card: card,
+                        rotationY: rotationY,
+                        contentWidth: AppConfigs.cardWidth * 0.8,
+                        isTitleSingleLine: false
                     )
                 } else {
                     // TODO: 为其他游戏类型提供默认视图
