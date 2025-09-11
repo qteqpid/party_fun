@@ -5,6 +5,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ButtonView: View {
     let isActive: Bool
@@ -14,6 +15,9 @@ struct ButtonView: View {
     
     var body: some View {
         Button {
+            // 触发震动反馈
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+            feedbackGenerator.impactOccurred()
             onButtonTap()
         } label: {
             if let buttonImg = AppConfigs.loadImage(name: "button.png") {
