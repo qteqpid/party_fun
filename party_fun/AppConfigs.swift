@@ -75,10 +75,18 @@ struct AppConfigs {
             Game(title: "断句挑战", cardBackground: "cut.png", cardForeground: ("cut_front.jpg", "#ffffff"), dataFile: "cut", isEnabled: true, gameName: .cut, topics: nil),
             Game(title: "真心话大冒险", cardBackground: "truth.jpg", cardForeground: ("truth_front.jpg", "#ffffff"), dataFile: "truth", isEnabled: true, gameName: .truth, topics: nil),
             Game(title: "海龟汤来了", cardBackground: "haigui.jpg", cardForeground: ("haigui_front.png", "#ffffff"), dataFile: "haigui", isEnabled: false, gameName: .haigui, topics: nil),
-            Game(title: "你做我猜", cardBackground: "guess.png", cardForeground: (nil, "#ffffff"), dataFile: "guess", isEnabled: true, gameName: .guess,
+            Game(title: "你比划我猜词", cardBackground: "guess.png", cardForeground: (nil, "#ffffff"), dataFile: "guess", isEnabled: true, gameName: .guess,
                 topics: [
-                    Topic(topicType: .animal, topicName: "动物", topicImage: "cut.png"),
-                    Topic(topicType: .food, topicName: "食物", topicImage: "trick.png")
+                    Topic(topicType: .network, topicName: "网络热词", topicImage: "network.png"),
+                    Topic(topicType: .company, topicName: "职场生活", topicImage: "company.png"),
+                    Topic(topicType: .year, topicName: "新年快乐", topicImage: "year.png"),
+                    Topic(topicType: .animal, topicName: "动物世界", topicImage: "animal.png"),
+                    Topic(topicType: .school, topicName: "校园百科", topicImage: "school.png"),
+                    Topic(topicType: .items, topicName: "生活物品", topicImage: "items.png"),
+                    Topic(topicType: .travel, topicName: "环游世界", topicImage: "travel.png"),
+                    Topic(topicType: .job, topicName: "各行各业", topicImage: "job.png"),
+                    Topic(topicType: .chengyu, topicName: "成语典故", topicImage: "chengyu.png"),
+                    Topic(topicType: .food, topicName: "美食广场", topicImage: "food.png")
                 ]
             )
 

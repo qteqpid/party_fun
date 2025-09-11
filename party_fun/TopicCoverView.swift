@@ -27,23 +27,6 @@ struct TopicCoverView: View {
                         onTap()
                     }
             }
-            
-            // 半透明蒙层和主题名称
-            VStack {
-                Spacer()
-                // 半透明蒙层
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.black.opacity(0.8))
-                    .frame(width: AppConfigs.gameCoverWidth, height: AppConfigs.gameCoverHeight * 0.2)
-                    .overlay(alignment: .center) {
-                        // 主题名称文字
-                        Text(topic.topicName)
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                            .shadow(radius: 2)
-                    }
-            }
         }
     }
 }

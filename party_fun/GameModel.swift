@@ -14,6 +14,14 @@ struct Line: Decodable, Equatable {
 enum TopicType: String, Decodable, CaseIterable  {
     case animal
     case food
+    case network
+    case job
+    case company
+    case school
+    case travel
+    case year
+    case items
+    case chengyu
 }
 
 // 主题结构体，管理主题相关信息
