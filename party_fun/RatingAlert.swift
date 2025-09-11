@@ -14,9 +14,9 @@ struct RatingAlert: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .alert("喜欢这个app的设计吗？", isPresented: $isPresented) {
-                Button("不喜欢") {}
-                Button("喜欢") {
+            .alert("你觉得app体验如何？", isPresented: $isPresented) {
+                Button("一般") {}
+                Button("还不错") {
                     requestReview()
                 }
             } message: {
