@@ -39,7 +39,14 @@ struct LandscapeGameView: View {
     @State private var currentCardIndex: Int = 0
     @State private var correctAnswers: Int = 0
     
+    // 返回按钮显示状态
+    @State private var backButtonOpacity: Double = 0
+    @State private var backButtonTimer: Timer? = nil
 
+    // 切换题目
+    @State private var showSkip: Bool = false
+    @State private var showCorrect: Bool = false
+    
     var isLandscapeLeft: Bool {
         let result = screenDirection == .screenFront
         return result
@@ -57,13 +64,29 @@ struct LandscapeGameView: View {
         guard currentCardIndex < topicCards.count else {
             return "没有更多卡片了"
         }
-        
+        if showSkip {
+            return "跳过"
+        }
+        if showCorrect {
+            return "答对了"
+        }
         let card = topicCards[currentCardIndex]
         // 获取卡片的主要内容
         if let title = card.title {
             return title.line.map { $0.content }.joined()
         }
         return ""
+    }
+
+    // 获取当前卡片背景色
+    var currentCardBackgroundColor: Color {
+        if showSkip {
+            return Color.red
+        }
+        if showCorrect {
+            return Color.green
+        }
+        return Color.blue
     }
     
     // 启动加速计更新
@@ -86,6 +109,19 @@ struct LandscapeGameView: View {
                     screenDirection = .screenFront
                     if (currentStage == .beforeReady) {
                         startReadyCountdown()
+                    } else if currentStage == .gameStarted {
+                        //切到下一题
+                        if (showSkip || showCorrect) {
+                            // 切换到下一题
+                            showSkip = false
+                            showCorrect = false
+                            currentCardIndex += 1
+                            if currentCardIndex >= topicCards.count {
+                                endGame(playVoice: true)
+                            } else {
+                                MusicPlayer.shared.playAudio(named: "flip_paper.m4a")
+                            }
+                        }
                     }
                 }
 
@@ -156,24 +192,31 @@ struct LandscapeGameView: View {
             
             ZStack {
                 // 背景色
-                Color.blue
+                currentCardBackgroundColor
                     .ignoresSafeArea()
                 
                 VStack {
-                    // 返回按钮
+                    // 返回按钮，默认隐藏，点击屏幕时显示
                     Button(action: {
-                        endGame()
+                        endGame(playVoice: false)
                         onBack()
                     }) {
-                        Image(systemName: "chevron.up.2")
-                            .font(.system(size: 40 * AppConfigs.cardFrontFontSizeScale))
+                        Image(systemName: "chevron.up.circle")
+                            .font(.system(size: 30 * AppConfigs.cardFrontFontSizeScale))
                             .foregroundColor(.white)
                             .padding()
                             .background(Color.blue)
                             .cornerRadius(10)
                     }
+                    .opacity(backButtonOpacity)
+                    .onTapGesture {
+                        // 确保按钮自身点击事件不影响主视图的点击事件
+                        endGame(playVoice: false)
+                        onBack()
+                    }
                     Spacer()
                 }
+
 
                 // 旋转内容，在竖屏模式下模拟横屏效果
                 ZStack {
@@ -181,7 +224,7 @@ struct LandscapeGameView: View {
                         if currentStage == .beforeReady {
                             Spacer()
                             // 初始状态
-                            Text("请把屏幕横屏面向队友")
+                            Text(AppConfigs.isIphone ? "请把屏幕横屏面向队友" : "此游戏仅支持在苹果手机上玩")
                                 .font(.system(size:100 * AppConfigs.cardFrontFontSizeScale))
                                 .fontWeight(.bold)
                                 .foregroundColor(Color.white)
@@ -255,14 +298,18 @@ struct LandscapeGameView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 // 应用旋转效果，在竖屏模式下模拟横屏显示
-                .rotationEffect(.degrees(90))
-                // 确保有足够空间显示多行文本
-                .frame(width: contentWidth * 0.8, height: contentHeight)
-                // 绝对定位确保在屏幕中央
-                .position(x: centerX, y: centerY)
+                    .rotationEffect(.degrees(90))
+                    // 确保有足够空间显示多行文本
+                    .frame(width: contentWidth * 0.8, height: contentHeight)
+                    // 绝对定位确保在屏幕中央
+                    .position(x: centerX, y: centerY)
 
-            }
-            // 监听方向变化通知
+                }
+                // 整个屏幕的点击手势，用于显示返回按钮
+                .onTapGesture {
+                    showBackButton()
+                }
+                // 监听方向变化通知
             .onAppear {
                 // 初始化 Core Motion 管理器
                 motionManager = CMMotionManager()
@@ -301,22 +348,43 @@ struct LandscapeGameView: View {
         }
     }
 
+    // 显示返回按钮，并设置3秒后自动隐藏
+    private func showBackButton() {
+        // 清除之前的定时器
+        backButtonTimer?.invalidate()
+        
+        // 立即显示返回按钮
+        withAnimation(.easeOut(duration: 0.3)) {
+            backButtonOpacity = 1
+        }
+        
+        // 设置3秒后自动隐藏
+        backButtonTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) {
+            [self] _ in
+            withAnimation(.easeIn(duration: 0.5)) {
+                backButtonOpacity = 0
+            }
+        }
+    }
+    
     // 处理屏幕翻转
     private func handleScreenRotation() {
         // 只有在游戏进行中才处理翻转
-        if currentStage != .gameStarted {
+        if currentStage != .gameStarted || (showSkip || showCorrect) {
             return
         }
         
         // 屏幕朝下或朝上
         if screenDirection == .screenUp || screenDirection == .screenDown {
             if screenDirection == .screenDown {
+                showCorrect = true
+                showSkip = false
+                MusicPlayer.shared.playAudio(named: "check.m4a")
                 correctAnswers += 1
-            }
-            currentCardIndex += 1
-            // 检查是否还有更多卡片
-            if currentCardIndex >= topicCards.count {
-                endGame()
+            } else {
+                showSkip = true
+                showCorrect = false
+                MusicPlayer.shared.playAudio(named: "fail.m4a")
             }
         }
     }
@@ -325,7 +393,7 @@ struct LandscapeGameView: View {
     private func startReadyCountdown() {
         currentStage = .isReady
         readyCountdown = 3
-        
+        MusicPlayer.shared.playAudio(named: "count.m4a")
         // 清除之前的定时器
         readyTimer?.invalidate()
         // 创建新的定时器
@@ -333,7 +401,7 @@ struct LandscapeGameView: View {
             [self] timer in
             
             readyCountdown -= 1
-            
+            // TODO: 来点音效
             if readyCountdown <= 0 {
                 timer.invalidate()
                 startGame()
@@ -358,21 +426,26 @@ struct LandscapeGameView: View {
             gameCountdown -= 1
             if gameCountdown <= 0 {
                 timer.invalidate()
-                endGame()
+                endGame(playVoice: true)
             }
         }
     }
     
     // 结束游戏
-    private func endGame() {
+    private func endGame(playVoice: Bool) {
+        backButtonOpacity = 1
         currentStage = .gameEnded
         gameTimer?.invalidate()
         releaseResource()
+        if (playVoice) {
+            MusicPlayer.shared.playAudio(named: "game_end.m4a")
+        }
     }
 
     private func releaseResource() {
         readyTimer?.invalidate()
         gameTimer?.invalidate()
+        backButtonTimer?.invalidate()
         // 停止 Core Motion 更新
         if let motionManager = motionManager {
             motionManager.stopAccelerometerUpdates()

@@ -70,11 +70,6 @@ struct AppConfigs {
         var games = [
             Game(title: "聊天盲盒", cardBackground: "chat.png", cardForeground: nil, dataFile: "chat", isEnabled: true, gameName: .chat, topics: nil),
             Game(title: "表情猜猜乐", cardBackground: "emoji.png", cardForeground: nil, dataFile: "emoji", isEnabled: true, gameName: .emoji, topics: nil),
-            Game(title: "喝酒之弈", cardBackground: "drink.png", cardForeground: ("drink_front.png", "#ffffff"), dataFile: "drink", isEnabled: true, gameName: .drink, topics: nil),
-            Game(title: "整蛊惩罚", cardBackground: "trick.png", cardForeground: ("trick_front.jpg", "#2d2d2d"), dataFile: "trick", isEnabled: true, gameName: .trick, topics: nil),
-            Game(title: "断句挑战", cardBackground: "cut.png", cardForeground: ("cut_front.jpg", "#ffffff"), dataFile: "cut", isEnabled: true, gameName: .cut, topics: nil),
-            Game(title: "真心话大冒险", cardBackground: "truth.jpg", cardForeground: ("truth_front.jpg", "#ffffff"), dataFile: "truth", isEnabled: true, gameName: .truth, topics: nil),
-            Game(title: "海龟汤来了", cardBackground: "haigui.jpg", cardForeground: ("haigui_front.png", "#ffffff"), dataFile: "haigui", isEnabled: false, gameName: .haigui, topics: nil),
             Game(title: "你比划我猜词", cardBackground: "guess.png", cardForeground: (nil, "#ffffff"), dataFile: "guess", isEnabled: true, gameName: .guess,
                 topics: [
                     Topic(topicType: .network, topicName: "网络热词", topicImage: "network.png"),
@@ -88,8 +83,12 @@ struct AppConfigs {
                     Topic(topicType: .chengyu, topicName: "成语典故", topicImage: "chengyu.png"),
                     Topic(topicType: .food, topicName: "美食广场", topicImage: "food.png")
                 ]
-            )
-
+            ),
+            Game(title: "喝酒之弈", cardBackground: "drink.png", cardForeground: ("drink_front.png", "#ffffff"), dataFile: "drink", isEnabled: true, gameName: .drink, topics: nil),
+            Game(title: "整蛊惩罚", cardBackground: "trick.png", cardForeground: ("trick_front.jpg", "#2d2d2d"), dataFile: "trick", isEnabled: true, gameName: .trick, topics: nil),
+            Game(title: "断句挑战", cardBackground: "cut.png", cardForeground: ("cut_front.jpg", "#ffffff"), dataFile: "cut", isEnabled: true, gameName: .cut, topics: nil),
+            Game(title: "真心话大冒险", cardBackground: "truth.jpg", cardForeground: ("truth_front.jpg", "#ffffff"), dataFile: "truth", isEnabled: true, gameName: .truth, topics: nil),
+            Game(title: "海龟汤来了", cardBackground: "haigui.jpg", cardForeground: ("haigui_front.png", "#ffffff"), dataFile: "haigui", isEnabled: true, gameName: .haigui, topics: nil)
         ]
         
         // 立即加载所有启用的游戏的卡片数据

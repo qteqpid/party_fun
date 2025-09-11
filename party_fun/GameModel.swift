@@ -3,7 +3,7 @@ import SwiftUI
 struct Word: Decodable, Equatable {
     let content: String
     let fontSize: CGFloat
-    let hasUnderline: Bool
+    let hasUnderline: Bool?
 }
 
 struct Line: Decodable, Equatable {

@@ -29,7 +29,7 @@ struct LineView: View {
                     .font(.system(size: word.fontSize * AppConfigs.cardFrontFontSizeScale))
                     .fontWeight(.bold)
                     .foregroundColor(foregroundColor)
-                    .underline(word.hasUnderline, color: foregroundColor)
+                    .underline(word.hasUnderline ?? false, color: foregroundColor)
                     .minimumScaleFactor(0.5) // 允许字体缩小到原大小的50%
                     .modifier(LineLimitModifier(isSingleLine: isSingleLine))
             }

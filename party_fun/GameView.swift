@@ -33,94 +33,101 @@ struct GameView: View {
     
     var body: some View {
         ZStack{
-        VStack {
-            // 标题栏
-            HStack {
-                Spacer()
-                Text(game.title)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .padding(.vertical, 10)
-                Spacer()
-            }
-            .padding()
+            VStack {
+                // 标题栏
+                HStack {
+                    Spacer()
+                    Text(game.title)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                        .padding(.vertical, 10)
+                    Spacer()
+                }
+                .padding()
 
-            // 根据游戏类型选择不同的视图组件
-            if let topics = game.topics {
-                GridCardView(
+                // 根据游戏类型选择不同的视图组件
+                if let topics = game.topics {
+                    GridCardView(
+                            game: game,
+                            topics: topics,
+                            onTopicSelect: {
+                                selectedTopic in
+                                // 显示主题游戏设置弹窗，添加动画效果
+                                self.selectedTopic = selectedTopic
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    self.showTopicSetting = true
+                                }
+                            }
+                        )
+                } else {
+                    Spacer()
+                    SingleCardView(
                         game: game,
-                        topics: topics,
-                        onTopicSelect: {
-                            selectedTopic in
-                            // 显示主题游戏设置弹窗
-                            self.selectedTopic = selectedTopic
-                            self.showTopicSetting = true
+                        card: card,
+                        rotationY: rotationY,
+                        currentImagePair: currentImagePair,
+                        isFlipping: isFlipping,
+                        onButtonTap: {
+                            // 处理按钮点击事件
+                            if isFlipping {
+                                stopFlipping()
+                            } else {
+                                startFlipping()
+                            }
                         }
                     )
-            } else {
+                }
+                
                 Spacer()
-                SingleCardView(
-                    game: game,
-                    card: card,
-                    rotationY: rotationY,
-                    currentImagePair: currentImagePair,
-                    isFlipping: isFlipping,
-                    onButtonTap: {
-                        // 处理按钮点击事件
-                        if isFlipping {
-                            stopFlipping()
-                        } else {
-                            startFlipping()
-                        }
+            }
+            .background {
+    // 优化背景图片渲染 - 使用单独的图层并设置为固定背景
+                if let bgImage = bgImage {
+                    // 使用单独的视图作为背景，避免与前景动画交互
+                    BackgroundImageView(image: bgImage)
+                        .ignoresSafeArea()
+                } else {
+                    // 回退渐变色背景
+                    LinearGradient(gradient: Gradient(colors: [Color.purple.opacity(0.1), Color.blue.opacity(0.1)]), startPoint: .top, endPoint: .bottom)
+                        .ignoresSafeArea()
+                }
+            }
+            .ratingAlert(isPresented: $showRatingAlert)
+            
+            // 条件显示主题游戏设置弹窗
+            if showTopicSetting, let topic = selectedTopic {
+                TopicGameSettingView(
+                    topic: topic,
+                    onStartGame: { duration in
+                        // 开始游戏并显示横屏视图
+                        startGameWithTopicAndDuration(topic, duration: duration)
+                    },
+                    onDismiss: {
+                        showTopicSetting = false
                     }
                 )
             }
             
-            Spacer()
-        }
-        .background {
-   // 优化背景图片渲染 - 使用单独的图层并设置为固定背景
-            if let bgImage = bgImage {
-                // 使用单独的视图作为背景，避免与前景动画交互
-                BackgroundImageView(image: bgImage)
-                    .ignoresSafeArea()
-            } else {
-                // 回退渐变色背景
-                LinearGradient(gradient: Gradient(colors: [Color.purple.opacity(0.1), Color.blue.opacity(0.1)]), startPoint: .top, endPoint: .bottom)
-                    .ignoresSafeArea()
+            // 条件显示横屏视图
+            if showLandscapeView, let topic = selectedTopic {
+                // 找到该主题类型对应的卡片
+                let topicCards = game.cards.filter { $0.topicType == topic.topicType }
+                
+                // 使用用户选择的游戏时长
+                LandscapeGameView(
+                    topicCards: topicCards,
+                    duration: selectedDuration,
+                    onBack: {
+                        showLandscapeView = false
+                    }
+                )
             }
-        }
-        .ratingAlert(isPresented: $showRatingAlert)
-        
-        // 条件显示主题游戏设置弹窗
-        if showTopicSetting, let topic = selectedTopic {
-            TopicGameSettingView(
-                topic: topic,
-                onStartGame: { duration in
-                    // 开始游戏并显示横屏视图
-                    startGameWithTopicAndDuration(topic, duration: duration)
-                },
-                onDismiss: {
-                    showTopicSetting = false
-                }
-            )
-        }
-        
-        // 条件显示横屏视图
-        if showLandscapeView, let topic = selectedTopic {
-            // 找到该主题类型对应的卡片
-            let topicCards = game.cards.filter { $0.topicType == topic.topicType }
-            
-            // 使用用户选择的游戏时长
-            LandscapeGameView(
-                topicCards: topicCards,
-                duration: selectedDuration,
-                onBack: {
-                    showLandscapeView = false
-                }
-            )
-        }
+        }.onAppear {
+            AppRatingManager.shared.incrementButtonTapCount()
+            if AppRatingManager.shared.shouldShowRatingAlert() {
+                showRatingAlert = true
+            }
         }
     }
     
