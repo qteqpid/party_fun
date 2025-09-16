@@ -182,6 +182,9 @@ struct TopicGameSettingView: View {
             .shadow(color: .black.opacity(0.3), radius: 20, x: 0, y: 12)
             .padding(20)
             .onTapGesture {}
+            .onAppear{
+                AppRatingManager.shared.incrementButtonTapCount()
+            }
             
         }
         .onTapGesture {

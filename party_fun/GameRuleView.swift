@@ -144,18 +144,6 @@ enum GameRules {
                 ]
             )
         
-        case .drink:
-            return GameRuleDescription(
-                title: "喝酒之弈",
-                rules: [
-                    "1. 玩家围坐一圈，轮流抽取卡片",
-                    "2. 根据卡片上的指示进行游戏或饮酒",
-                    "3. 可以根据个人情况适量饮酒",
-                    "4. 请理性饮酒，注意安全",
-                    "5. 未成年人请勿饮酒"
-                ]
-            )
-        
         case .trick:
             return GameRuleDescription(
                 title: "整蛊惩罚",

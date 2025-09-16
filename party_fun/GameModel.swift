@@ -46,7 +46,6 @@ struct Card: Decodable, Equatable {
 // 游戏名称枚举
 enum GameName: String, CaseIterable {
     case chat = "chat"
-    case drink = "drink"
     case trick = "trick"
     case guess = "guess"
     case emoji = "emoji"

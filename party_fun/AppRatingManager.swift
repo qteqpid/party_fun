@@ -21,7 +21,7 @@ class AppRatingManager {
     // 触发条件阈值
     private let isAppRatingEnabled = true
     private let requiredLaunchCount = 3
-    private let requiredButtonTapCount = 6 // 实际上这个值是打开多少次具体游戏界面
+    private let requiredButtonTapCount = 4 // 实际上这个值是打开多少次具体游戏界面
     
     // 获取和增加启动次数
     var launchCount: Int {

@@ -226,12 +226,6 @@ struct SingleCardView: View {
                         card: card,
                         rotationY: rotationY
                     )
-                } else if game.gameName == .drink {
-                    CardDrinkView(
-                        currentImagePair: currentImagePair,
-                        card: card,
-                        rotationY: rotationY
-                    )
                 } else if game.gameName == .haigui {
                     CardHaiguiView(
                         currentImagePair: currentImagePair,

@@ -41,7 +41,7 @@ struct CardHaiguiView: View {
                                 UIApplication.shared.open(url)
                             }
                         }
-                }
+                    }
                 }
             }
             .padding(40) // 添加内边距
