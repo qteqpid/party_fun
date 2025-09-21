@@ -31,20 +31,33 @@ struct ContentView: View {
             ZStack {
                 VStack {
                     // 标题层 - 严格居中
-                    Text("聚会卡牌游戏")
-                        .font(.system(size: AppConfigs.appTitleSize, weight: .black, design: .rounded))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [
-                                    Color.blue,
-                                    Color.yellow,
-                                    
-                                    Color.cyan
-                                ],
-                                startPoint: .leading,
-                                endPoint: .trailing
+                    ZStack {
+                        Text("聚会卡牌游戏")
+                            .font(.system(size: AppConfigs.appTitleSize, weight: .black, design: .rounded))
+                            .foregroundStyle(
+                                LinearGradient(
+                                    colors: [
+                                        Color.blue,
+                                        Color.yellow,
+                                        
+                                        Color.cyan
+                                    ],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
                             )
-                        )
+                        // TODO: 加一个设置入口，浮在标题右侧
+                        HStack {
+                            Spacer()
+                            NavigationLink(destination: SettingsView(backgroundColor: Color(hex: "#2d2d2d"))) {
+                                Image(systemName: "gearshape.fill")
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .padding(.trailing, 20)
+                            }
+                        }
+                    }
+                    
                     
                     
                     // 可无限下拉的ScrollView

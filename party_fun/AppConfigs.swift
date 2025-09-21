@@ -65,6 +65,21 @@ struct AppConfigs {
         return UIDevice.current.userInterfaceIdiom == .phone
     }
 
+    static var appVersion: String {
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return version
+        }
+        return "1.0"
+    }
+
+    static func openUrl(url: String) {
+        if let targetUrl = URL(string: url) {
+            if UIApplication.shared.canOpenURL(targetUrl) {
+                UIApplication.shared.open(targetUrl, options: [:], completionHandler: nil)
+            }
+        }
+    }
+
     static let games: [Game] = {
         // 创建游戏实例 - 为所有游戏添加cardForeground参数
         var games = [
