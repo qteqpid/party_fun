@@ -79,6 +79,14 @@ struct AppConfigs {
             }
         }
     }
+    
+    static func getAppStoreUrl(appId: String) -> String {
+        if isIphone {
+            return "itms-apps://itunes.apple.com/app/id\(appId)"
+        } else {
+            return "https://apps.apple.com/cn/app/id\(appId)"
+        }
+    }
 
     static let games: [Game] = {
         // 创建游戏实例 - 为所有游戏添加cardForeground参数
