@@ -74,6 +74,8 @@ struct SettingsRow<RightContent: View>: View {
                     .foregroundColor(settingFontColor)
             }
             Text(title)
+                .minimumScaleFactor(0.8)
+                .lineLimit(1)
                 .foregroundColor(settingFontColor)
             Spacer()
             rightContent

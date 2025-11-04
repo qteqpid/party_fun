@@ -17,7 +17,9 @@ extension UINavigationController {
     }
 }
 struct ContentView: View {
+    @StateObject private var purchaseManager = InAppPurchaseManager.shared
     @State private var showRatingAlert = false // 控制是否显示评分弹窗
+    @State private var showPurchaseView = false
     
     // init() {
     //     let appearance = UINavigationBarAppearance()
@@ -32,7 +34,7 @@ struct ContentView: View {
                 VStack {
                     // 标题层 - 严格居中
                     ZStack {
-                        Text("聚会卡牌游戏")
+                        Text("嗨玩")
                             .font(.system(size: AppConfigs.appTitleSize, weight: .black, design: .rounded))
                             .foregroundStyle(
                                 LinearGradient(
@@ -49,7 +51,7 @@ struct ContentView: View {
                         // TODO: 加一个设置入口，浮在标题右侧
                         HStack {
                             Spacer()
-                            NavigationLink(destination: SettingsView(backgroundColor: Color(hex: "#2d2d2d"))) {
+                            NavigationLink(destination: SettingsView(showPurchaseView: $showPurchaseView, backgroundColor: Color(hex: "#2d2d2d"))) {
                                 Image(systemName: "gearshape.fill")
                                     .foregroundColor(.white)
                                     .font(.title2)
@@ -68,7 +70,7 @@ struct ContentView: View {
                                 // 使用GameCoverView组件显示卡片
                                 if game.isEnabled {
                                     // 仅当游戏启用时才允许点击进入
-                                    NavigationLink(destination: GameView(game: game)) {
+                                    NavigationLink(destination: GameView(game: game, showPurchaseView: $showPurchaseView)) {
                                         GameCoverView(game: game)
                                     }
                                     .buttonStyle(PlainButtonStyle())
@@ -106,6 +108,9 @@ struct ContentView: View {
             }
         }
         .ratingAlert(isPresented: $showRatingAlert)
+        .sheet(isPresented: $showPurchaseView) {
+            PurchaseView(purchaseManager: purchaseManager, showRatingAlert: $showRatingAlert)
+        }
     }
 }
 

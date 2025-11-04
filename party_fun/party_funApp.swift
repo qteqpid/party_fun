@@ -19,6 +19,7 @@ struct party_funApp: App {
             NavigationStack {
                 ContentView()
             }
+            .preferredColorScheme(.light)
         }
     }
 }

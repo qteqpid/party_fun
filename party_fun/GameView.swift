@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import StoreKit
 
 
 
@@ -14,7 +15,7 @@ import UIKit
 // 游戏视图
 struct GameView: View {
     let game: Game
-    
+    @Binding var showPurchaseView: Bool    
     @State private var isFlipping = false
     @State private var card: Card? = nil
     @State private var rotationY = 0.0
@@ -54,10 +55,16 @@ struct GameView: View {
                             onTopicSelect: {
                                 selectedTopic in
                                 // 显示主题游戏设置弹窗，添加动画效果
-                                self.selectedTopic = selectedTopic
-                                withAnimation(.easeInOut(duration: 0.2)) {
-                                    self.showTopicSetting = true
+                                InAppPurchaseManager.shared.increaseUseTimes()
+                                if InAppPurchaseManager.shared.shouldShowPurchaseAlert() {
+                                    showPurchaseView = true
+                                } else {
+                                    self.selectedTopic = selectedTopic
+                                    withAnimation(.easeInOut(duration: 0.2)) {
+                                        self.showTopicSetting = true
+                                    }
                                 }
+                                
                             }
                         )
                 } else {
@@ -69,12 +76,19 @@ struct GameView: View {
                         currentImagePair: currentImagePair,
                         isFlipping: isFlipping,
                         onButtonTap: {
-                            // 处理按钮点击事件
-                            if isFlipping {
-                                stopFlipping()
+                            InAppPurchaseManager.shared.increaseUseTimes()
+                            if InAppPurchaseManager.shared.shouldShowPurchaseAlert() {
+                                showPurchaseView = true
                             } else {
-                                startFlipping()
+                                // 处理按钮点击事件
+                                if isFlipping {
+                                    stopFlipping()
+                                } else {
+                                    startFlipping()
+                                }
                             }
+                            
+                            
                         }
                     )
                 }
@@ -124,9 +138,14 @@ struct GameView: View {
                 )
             }
         }.onAppear {
+            InAppPurchaseManager.shared.increaseUseTimes()
             AppRatingManager.shared.incrementButtonTapCount()
-            if AppRatingManager.shared.shouldShowRatingAlert() {
-                showRatingAlert = true
+            if InAppPurchaseManager.shared.shouldShowPurchaseAlert() {
+                showPurchaseView = true
+            } else {
+                if AppRatingManager.shared.shouldShowRatingAlert() {
+                    showRatingAlert = true
+                }
             }
         }
     }

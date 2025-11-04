@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A1EF1E712EB6437400A80483 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1EF1E702EB6437400A80483 /* StoreKit.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A1D9B6BA2E6A8226000CF95D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		A1D9B6AC2E6A8224000CF95D /* party_fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = party_fun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D9B6B92E6A8226000CF95D /* party_funTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = party_funTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D9B6C32E6A8226000CF95D /* party_funUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = party_funUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1EF1E702EB6437400A80483 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1EF1E712EB6437400A80483 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,7 @@
 				A1D9B6AE2E6A8224000CF95D /* party_fun */,
 				A1D9B6BC2E6A8226000CF95D /* party_funTests */,
 				A1D9B6C62E6A8226000CF95D /* party_funUITests */,
+				A1EF1E6F2EB6437400A80483 /* Frameworks */,
 				A1D9B6AD2E6A8224000CF95D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +97,14 @@
 				A1D9B6C32E6A8226000CF95D /* party_funUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A1EF1E6F2EB6437400A80483 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1EF1E702EB6437400A80483 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,7 +415,7 @@
 				DEVELOPMENT_TEAM = 5N6B48T57B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "团建聚会游戏";
+				INFOPLIST_KEY_CFBundleDisplayName = "嗨玩";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSMotionUsageDescription = "需要访问设备运动数据以检测屏幕倾斜状态，实现游戏交互功能。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -412,7 +427,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qteqpid.party-fun";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -431,7 +446,7 @@
 				DEVELOPMENT_TEAM = 5N6B48T57B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "团建聚会游戏";
+				INFOPLIST_KEY_CFBundleDisplayName = "嗨玩";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSMotionUsageDescription = "需要访问设备运动数据以检测屏幕倾斜状态，实现游戏交互功能。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -443,7 +458,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qteqpid.party-fun";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

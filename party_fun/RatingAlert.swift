@@ -17,12 +17,13 @@ struct RatingAlert: ViewModifier {
             .alert("你觉得app体验如何？", isPresented: $isPresented) {
                 Button("一般") {}
                 Button("还不错") {
+                    //AppConfigs.openUrl(url: "itms-apps://itunes.apple.com/app/id6748935753?action=write-review")
                     requestReview()
                 }
             } message: {
-                Text("觉得还不错的话帮忙打个分吧~ 😘")
+                Text("觉得还不错的话帮忙打个好评吧~ 😘")
                     .font(.body)
-                    .foregroundColor(Color.primary)
+                    .foregroundColor(Color.black)
             }
     }
 }
