@@ -35,23 +35,21 @@ struct GameView: View {
     var body: some View {
         ZStack{
             VStack {
-                // 标题栏
-                HStack {
-                    Spacer()
-                    Text(game.title)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)
-                        .padding(.vertical, 10)
-                    Spacer()
-                }
-                .padding()
-
                 // 根据游戏类型选择不同的视图组件
                 if game.gameName == .wodi {
-                    Spacer()
                     WodiGameView(game: game, showPurchaseView: $showPurchaseView)
                 } else if let topics = game.topics {
+                    // 标题栏
+                    HStack {
+                        Spacer()
+                        Text(game.title)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+                            .padding(.vertical, 10)
+                        Spacer()
+                    }
+                    .padding()
                     GridCardView(
                             game: game,
                             topics: topics,
@@ -71,6 +69,17 @@ struct GameView: View {
                             }
                         )
                 } else {
+                    // 标题栏
+                    HStack {
+                        Spacer()
+                        Text(game.title)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+                            .padding(.vertical, 10)
+                        Spacer()
+                    }
+                    .padding()
                     Spacer()
                     SingleCardView(
                         game: game,
