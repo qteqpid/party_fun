@@ -89,7 +89,7 @@ struct PurchaseView: View {
                                 }
                             }
                         }
-                        .foregroundColor(.blue)
+                        .foregroundColor(.white)
                         .font(.subheadline)
                         
                         Button("稍后再说") {
@@ -99,7 +99,7 @@ struct PurchaseView: View {
                                 showRatingAlert = true
                             }
                         }
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
                         .font(.subheadline)
                     }
                     .padding(.horizontal)
@@ -158,7 +158,7 @@ struct FeatureRow: View {
                 
                 Text(LocalizedStringKey(description))
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.leading)
                     .minimumScaleFactor(0.9)
                     .lineLimit(2)

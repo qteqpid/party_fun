@@ -1,0 +1,606 @@
+[
+  {
+    "normalWord": "西游记",
+    "spyWord": "白蛇传"
+  },
+  {
+    "normalWord": "螃蟹",
+    "spyWord": "龙虾"
+  },
+  {
+    "normalWord": "睡觉",
+    "spyWord": "上床"
+  },
+  {
+    "normalWord": "北京",
+    "spyWord": "上海"
+  },
+  {
+    "normalWord": "美的",
+    "spyWord": "格力"
+  },
+  {
+    "normalWord": "失恋",
+    "spyWord": "离婚"
+  },
+  {
+    "normalWord": "神雕侠侣",
+    "spyWord": "天龙八部"
+  },
+  {
+    "normalWord": "青藏高原",
+    "spyWord": "黄土高原"
+  },
+  {
+    "normalWord": "足疗",
+    "spyWord": "洗浴"
+  },
+  {
+    "normalWord": "富二代",
+    "spyWord": "高宣帅"
+  },
+  {
+    "normalWord": "情人节",
+    "spyWord": "光棍节"
+  },
+  {
+    "normalWord": "C罗",
+    "spyWord": "梅西"
+  },
+  {
+    "normalWord": "潘金莲",
+    "spyWord": "苏妲己"
+  },
+  {
+    "normalWord": "人妖",
+    "spyWord": "太监"
+  },
+  {
+    "normalWord": "打太极",
+    "spyWord": "打麻将"
+  },
+  {
+    "normalWord": "抖音",
+    "spyWord": "小红书"
+  },
+  {
+    "normalWord": "成龙",
+    "spyWord": "李连杰"
+  },
+  {
+    "normalWord": "胸罩",
+    "spyWord": "口罩"
+  },
+  {
+    "normalWord": "母老虎",
+    "spyWord": "母夜叉"
+  },
+  {
+    "normalWord": "黄瓜",
+    "spyWord": "苦瓜"
+  },
+  {
+    "normalWord": "屁股",
+    "spyWord": "脸蛋"
+  },
+  {
+    "normalWord": "华为手机",
+    "spyWord": "苹果手机"
+  },
+  {
+    "normalWord": "大头儿子",
+    "spyWord": "光头强"
+  },
+  {
+    "normalWord": "楼梯",
+    "spyWord": "电梯"
+  },
+  {
+    "normalWord": "女朋友",
+    "spyWord": "情人"
+  },
+  {
+    "normalWord": "奔驰",
+    "spyWord": "宝马"
+  },
+  {
+    "normalWord": "可口可乐",
+    "spyWord": "百事可乐"
+  },
+  {
+    "normalWord": "忍者神龟",
+    "spyWord": "空白"
+  },
+  {
+    "normalWord": "奥运会",
+    "spyWord": "冬奥会"
+  },
+  {
+    "normalWord": "骑马",
+    "spyWord": "骑摩托"
+  },
+  {
+    "normalWord": "马云",
+    "spyWord": "马斯克"
+  },
+  {
+    "normalWord": "腾讯QQ",
+    "spyWord": "微信"
+  },
+  {
+    "normalWord": "袜子",
+    "spyWord": "丝袜"
+  },
+  {
+    "normalWord": "笔记本电脑",
+    "spyWord": "台式电脑"
+  },
+  {
+    "normalWord": "农夫山泉",
+    "spyWord": "娃哈哈"
+  },
+  {
+    "normalWord": "NBA",
+    "spyWord": "CBA"
+  },
+  {
+    "normalWord": "电冰箱",
+    "spyWord": "电视机"
+  },
+  {
+    "normalWord": "妈妈",
+    "spyWord": "奶奶"
+  },
+  {
+    "normalWord": "扣鼻屎",
+    "spyWord": "擦鼻涕"
+  },
+  {
+    "normalWord": "紧身衣",
+    "spyWord": "紧身裤"
+  },
+  {
+    "normalWord": "刘德华",
+    "spyWord": "马德华"
+  },
+  {
+    "normalWord": "奖牌",
+    "spyWord": "金牌"
+  },
+  {
+    "normalWord": "齐天大圣",
+    "spyWord": "孙悟空"
+  },
+  {
+    "normalWord": "秦始皇",
+    "spyWord": "兵马俑"
+  },
+  {
+    "normalWord": "如来佛祖",
+    "spyWord": "观世音菩萨"
+  },
+  {
+    "normalWord": "小电影",
+    "spyWord": "电视剧"
+  },
+  {
+    "normalWord": "旅游",
+    "spyWord": "出国"
+  },
+  {
+    "normalWord": "蹦迪",
+    "spyWord": "跳舞"
+  },
+  {
+    "normalWord": "酒吧",
+    "spyWord": "茶楼"
+  },
+  {
+    "normalWord": "妇女节",
+    "spyWord": "教师节"
+  },
+  {
+    "normalWord": "烧烤",
+    "spyWord": "野炊"
+  },
+  {
+    "normalWord": "结婚",
+    "spyWord": "订婚"
+  },
+  {
+    "normalWord": "同学",
+    "spyWord": "同事"
+  },
+  {
+    "normalWord": "茶",
+    "spyWord": "尿"
+  },
+  {
+    "normalWord": "小日本",
+    "spyWord": "苍老师"
+  },
+  {
+    "normalWord": "包青天",
+    "spyWord": "狄仁杰"
+  },
+  {
+    "normalWord": "俄罗斯",
+    "spyWord": "白俄罗斯"
+  },
+  {
+    "normalWord": "端午节",
+    "spyWord": "中秋节"
+  },
+  {
+    "normalWord": "手机",
+    "spyWord": "BB机"
+  },
+  {
+    "normalWord": "床单",
+    "spyWord": "被子"
+  },
+  {
+    "normalWord": "蜘蛛侠",
+    "spyWord": "蝙蝠侠"
+  },
+  {
+    "normalWord": "郭德纲",
+    "spyWord": "周立波"
+  },
+  {
+    "normalWord": "双胞胎",
+    "spyWord": "龙凤胎"
+  },
+  {
+    "normalWord": "老佛爷",
+    "spyWord": "老天爷"
+  },
+  {
+    "normalWord": "水浒传",
+    "spyWord": "三国演义"
+  },
+  {
+    "normalWord": "桃园三结义",
+    "spyWord": "结拜兄弟"
+  },
+  {
+    "normalWord": "如来神掌",
+    "spyWord": "佛山无影脚"
+  },
+  {
+    "normalWord": "叶问",
+    "spyWord": "咏春"
+  },
+  {
+    "normalWord": "李小龙",
+    "spyWord": "成龙"
+  },
+  {
+    "normalWord": "机器人",
+    "spyWord": "变形金刚"
+  },
+  {
+    "normalWord": "菊花",
+    "spyWord": "桃花"
+  },
+  {
+    "normalWord": "奶茶",
+    "spyWord": "饮料"
+  },
+  {
+    "normalWord": "建设银行",
+    "spyWord": "农业银行"
+  },
+  {
+    "normalWord": "李逵",
+    "spyWord": "张飞"
+  },
+  {
+    "normalWord": "关羽",
+    "spyWord": "曹操"
+  },
+  {
+    "normalWord": "诸葛亮",
+    "spyWord": "周瑜"
+  },
+  {
+    "normalWord": "吴京",
+    "spyWord": "战狼"
+  },
+  {
+    "normalWord": "周润发",
+    "spyWord": "刘德华"
+  },
+  {
+    "normalWord": "范冰冰",
+    "spyWord": "林心如"
+  },
+  {
+    "normalWord": "流氓",
+    "spyWord": "小混混"
+  },
+  {
+    "normalWord": "支付宝",
+    "spyWord": "微信"
+  },
+  {
+    "normalWord": "孔子",
+    "spyWord": "老子"
+  },
+  {
+    "normalWord": "谢娜",
+    "spyWord": "李湘"
+  },
+  {
+    "normalWord": "葛优",
+    "spyWord": "孟非"
+  },
+  {
+    "normalWord": "蜘蛛精",
+    "spyWord": "白骨精"
+  },
+  {
+    "normalWord": "蒋介石",
+    "spyWord": "蒋经国"
+  },
+  {
+    "normalWord": "张学良",
+    "spyWord": "张作霖"
+  },
+  {
+    "normalWord": "新冠",
+    "spyWord": "非典"
+  },
+  {
+    "normalWord": "中国",
+    "spyWord": "美国"
+  },
+  {
+    "normalWord": "小沈阳",
+    "spyWord": "宋小宝"
+  },
+  {
+    "normalWord": "相声",
+    "spyWord": "小品"
+  },
+  {
+    "normalWord": "扈三娘",
+    "spyWord": "孙二娘"
+  },
+  {
+    "normalWord": "武松",
+    "spyWord": "武大郎"
+  },
+  {
+    "normalWord": "射雕英雄传",
+    "spyWord": "天龙八部"
+  },
+  {
+    "normalWord": "武当山",
+    "spyWord": "峨眉山"
+  },
+  {
+    "normalWord": "令狐冲",
+    "spyWord": "张无忌"
+  },
+  {
+    "normalWord": "李云龙",
+    "spyWord": "丁伟"
+  },
+  {
+    "normalWord": "宋丹丹",
+    "spyWord": "白云"
+  },
+  {
+    "normalWord": "姚明",
+    "spyWord": "易建联"
+  },
+  {
+    "normalWord": "中国平安",
+    "spyWord": "中国人寿"
+  },
+  {
+    "normalWord": "鸡蛋",
+    "spyWord": "鸡腿"
+  },
+  {
+    "normalWord": "淘宝",
+    "spyWord": "京东"
+  },
+  {
+    "normalWord": "中央1台",
+    "spyWord": "中央6台"
+  },
+  {
+    "normalWord": "亲吻",
+    "spyWord": "拥抱"
+  },
+  {
+    "normalWord": "牛奶",
+    "spyWord": "奶牛"
+  },
+  {
+    "normalWord": "上学",
+    "spyWord": "坐牢"
+  },
+  {
+    "normalWord": "眼泪",
+    "spyWord": "汗液"
+  },
+  {
+    "normalWord": "咸菜",
+    "spyWord": "鼻屎"
+  },
+  {
+    "normalWord": "对象",
+    "spyWord": "共享单车"
+  },
+  {
+    "normalWord": "现金",
+    "spyWord": "卫生纸"
+  },
+  {
+    "normalWord": "开塞露",
+    "spyWord": "眼药水"
+  },
+  {
+    "normalWord": "刺身",
+    "spyWord": "鸡粪"
+  },
+  {
+    "normalWord": "棺材",
+    "spyWord": "床"
+  },
+  {
+    "normalWord": "婚礼",
+    "spyWord": "葬礼"
+  },
+  {
+    "normalWord": "骨灰",
+    "spyWord": "奶粉"
+  },
+  {
+    "normalWord": "化粪池",
+    "spyWord": "游泳池"
+  },
+  {
+    "normalWord": "葱花",
+    "spyWord": "腋毛"
+  },
+  {
+    "normalWord": "扣篮",
+    "spyWord": "猝死"
+  },
+  {
+    "normalWord": "痔疮",
+    "spyWord": "口腔溃疡"
+  },
+  {
+    "normalWord": "玩偶",
+    "spyWord": "尸体"
+  },
+  {
+    "normalWord": "初吻",
+    "spyWord": "妈妈"
+  },
+  {
+    "normalWord": "蛋挞",
+    "spyWord": "痔疮"
+  },
+  {
+    "normalWord": "骨科",
+    "spyWord": "男科"
+  },
+  {
+    "normalWord": "黑丝",
+    "spyWord": "秋裤"
+  },
+  {
+    "normalWord": "社牛",
+    "spyWord": "变态"
+  },
+  {
+    "normalWord": "草莓",
+    "spyWord": "尸体"
+  },
+  {
+    "normalWord": "水仙",
+    "spyWord": "脐橙"
+  },
+  {
+    "normalWord": "赶海",
+    "spyWord": "下海"
+  },
+  {
+    "normalWord": "猪肉",
+    "spyWord": "男人"
+  },
+  {
+    "normalWord": "头发",
+    "spyWord": "胸毛"
+  },
+  {
+    "normalWord": "小米",
+    "spyWord": "华为"
+  },
+  {
+    "normalWord": "甘蔗",
+    "spyWord": "玉米"
+  },
+  {
+    "normalWord": "饥饿",
+    "spyWord": "饥渴"
+  },
+  {
+    "normalWord": "搭讪",
+    "spyWord": "勾搭"
+  },
+  {
+    "normalWord": "花环",
+    "spyWord": "花圈"
+  },
+  {
+    "normalWord": "社畜",
+    "spyWord": "码农"
+  },
+  {
+    "normalWord": "蹦极",
+    "spyWord": "跳楼"
+  },
+  {
+    "normalWord": "保姆",
+    "spyWord": "丫鬟"
+  },
+  {
+    "normalWord": "唇膏",
+    "spyWord": "口红"
+  },
+  {
+    "normalWord": "留堂",
+    "spyWord": "加班"
+  },
+  {
+    "normalWord": "吉他",
+    "spyWord": "琵琶"
+  },
+  {
+    "normalWord": "鹦鹉",
+    "spyWord": "鸽子"
+  },
+  {
+    "normalWord": "油条",
+    "spyWord": "麻花"
+  },
+  {
+    "normalWord": "剩女",
+    "spyWord": "御姐"
+  },
+  {
+    "normalWord": "蚊子",
+    "spyWord": "苍蝇"
+  },
+  {
+    "normalWord": "汤圆",
+    "spyWord": "丸子"
+  },
+  {
+    "normalWord": "分居",
+    "spyWord": "离婚"
+  },
+  {
+    "normalWord": "皇帝",
+    "spyWord": "王子"
+  },
+  {
+    "normalWord": "团建",
+    "spyWord": "聚餐"
+  },
+  {
+    "normalWord": "红酒",
+    "spyWord": "白酒"
+  },
+  {
+    "normalWord": "灵牌",
+    "spyWord": "奖牌"
+  }
+]

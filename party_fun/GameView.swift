@@ -48,7 +48,10 @@ struct GameView: View {
                 .padding()
 
                 // 根据游戏类型选择不同的视图组件
-                if let topics = game.topics {
+                if game.gameName == .wodi {
+                    Spacer()
+                    WodiGameView(game: game, showPurchaseView: $showPurchaseView)
+                } else if let topics = game.topics {
                     GridCardView(
                             game: game,
                             topics: topics,

@@ -42,6 +42,11 @@ struct Card: Decodable, Equatable {
     let topicType: TopicType? // 改为使用TopicType而不是Topic
 }
 
+struct WodiCard: Decodable, Equatable {
+    let normalWord: String
+    let spyWord: String
+}
+
 
 // 游戏名称枚举
 enum GameName: String, CaseIterable {
@@ -52,6 +57,7 @@ enum GameName: String, CaseIterable {
     case cut = "cut"
     case haigui = "haigui"
     case truth = "truth"
+    case wodi = "wodi"
 }
 
 // 定义卡片数据模型
@@ -65,6 +71,7 @@ struct Game: Identifiable {
     let gameName: GameName // 新增字段，存储游戏名称枚举
     let topics: [Topic]?
     var cards: [Card] = []
+    var wodiCards: [WodiCard] = [] // 谁是卧底游戏的卡片数据
     var cardForegroundImagePair: [(UIImage?, Color)] = []
 
 
@@ -132,12 +139,17 @@ struct Game: Identifiable {
         do {
             let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
-            // 假设JSON包含一个cards数组
-            cards = try decoder.decode([Card].self, from: data)
+            // 根据游戏类型加载不同的数据
+            if gameName == .wodi {
+                wodiCards = try decoder.decode([WodiCard].self, from: data)
+            } else {
+                cards = try decoder.decode([Card].self, from: data)
+            }
         } catch {
             // 加载失败时使用模拟数据
             print("[\(dataFile).json文件]加载卡片数据失败: \(error.localizedDescription)")
             cards = []
+            wodiCards = []
         }
     }
 }
